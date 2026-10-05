@@ -69,6 +69,16 @@ header nav{display:flex;gap:24px;font-size:15px;flex-grow:1}
 .soonsec .lead>div:last-child{grid-column:span 5;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
 .soonsec .descph{display:block;text-align:left;min-height:96px;line-height:1.6}
 .soon-card .ph{height:200px}
+.gb-intro{display:flex;flex-direction:column;gap:12px}
+.gb-intro .lead-p{font-size:19px;color:var(--ink);font-weight:600}
+.blist{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.blist li{position:relative;padding-left:22px;font-size:16px;line-height:1.45;color:var(--text)}
+.blist li::before{content:"";position:absolute;left:4px;top:.55em;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.gb-cta{border-radius:12px;background:var(--accent);color:#fff;padding:28px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center}
+.gb-cta p{color:#e9e5f3}
+.gb-cta .big{font-size:19px;color:#fff;font-weight:600}
+.gb-cta .btn{background:#fff;color:var(--accent);border-color:#fff}
+.gb-cta .btn:hover{background:var(--soft);color:var(--accent-2)}
 .promo{border:1.5px solid var(--todo);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px;background:#fff;min-width:0}
 .promo .lbl{align-self:flex-start;background:var(--todo);color:#fff;border-radius:6px;padding:4px 10px;font-size:13px;font-weight:700}
 
@@ -178,6 +188,7 @@ footer .links button{background:none;border:0;padding:0;color:#5b4a8a;text-decor
   section[id]{scroll-margin-top:124px}
   .soonsec .lead{grid-template-columns:1fr;gap:20px}
   .soonsec .lead>div{grid-column:auto!important}
+  .gb-cta{grid-template-columns:1fr;padding:22px}
   .burger{display:flex}
   header{padding:12px 16px;gap:12px;justify-content:space-between}
   .hero{grid-template-columns:1fr;padding:40px 16px 48px;gap:28px}
@@ -233,7 +244,6 @@ footer .links button{background:none;border:0;padding:0;color:#5b4a8a;text-decor
   </div>
 </header>
 <nav class="quick" aria-label="Быстрый переход по разделам">
-  <a href="#promo" class="hot">Акции</a>
   <a href="#menu" data-jump="bakery">Выпечка</a>
   <a href="#menu" data-jump="desserts">Десерты</a>
   <a href="#menu" data-jump="trd">Трдельники</a>
@@ -241,6 +251,7 @@ footer .links button{background:none;border:0;padding:0;color:#5b4a8a;text-decor
   <a href="#cakes">Торты на заказ <small>скоро</small></a>
   <a href="#gastro">Гастробоксы <small>скоро</small></a>
   <a href="#gifts">Сладкие подарки <small>скоро</small></a>
+  <a href="#promo" class="hot">Акции</a>
 </nav>
 </div>
 
@@ -272,21 +283,9 @@ footer .links button{background:none;border:0;padding:0;color:#5b4a8a;text-decor
   </div>
 </section>
 
-<!-- АКЦИИ -->
-<section id="promo" class="sec">
-  <span class="tag">02 · Акции</span>
-  <h2>Акции и спецпредложения</h2>
-  <div class="g3">
-    <div class="promo"><span class="lbl">Акция</span><div class="ph" style="height:180px">ФОТО / БАННЕР<br>акции 1</div><h3>Название акции 1</h3><p class="small">Условия акции и срок действия <span class="todo">[от заказчика]</span></p><div><a class="btn2 sm" href="#menu">Выбрать в меню</a></div></div>
-    <div class="promo"><span class="lbl">Акция</span><div class="ph" style="height:180px">ФОТО / БАННЕР<br>акции 2</div><h3>Название акции 2</h3><p class="small">Условия акции и срок действия <span class="todo">[от заказчика]</span></p><div><a class="btn2 sm" href="#menu">Выбрать в меню</a></div></div>
-    <div class="promo"><span class="lbl">Акция</span><div class="ph" style="height:180px">ФОТО / БАННЕР<br>акции 3</div><h3>Название акции 3</h3><p class="small">Условия акции и срок действия <span class="todo">[от заказчика]</span></p><div><a class="btn2 sm" href="#menu">Выбрать в меню</a></div></div>
-  </div>
-  <p class="note">Количество карточек любое: добавляются и убираются в Tilda. Если акций нет — блок можно временно скрыть.</p>
-</section>
-
 <!-- КАТАЛОГ -->
 <section id="menu" class="sec soft">
-  <span class="tag">03 · Наш ассортимент (Tilda Store + корзина)</span>
+  <span class="tag">02 · Наш ассортимент (Tilda Store + корзина)</span>
   <div class="cat-head">
     <h2>Наш ассортимент</h2>
     <div class="tabs" role="group" aria-label="Категории">
@@ -302,8 +301,8 @@ footer .links button{background:none;border:0;padding:0;color:#5b4a8a;text-decor
 </section>
 
 <!-- ФИРМЕННОЕ: ТРДЕЛЬНИК -->
-<section id="trdelnik" class="sec soft">
-  <span class="tag">04 · Фирменная позиция — что такое трдельник</span>
+<section id="trdelnik" class="sec">
+  <span class="tag">03 · Фирменная позиция — что такое трдельник</span>
   <div class="g2">
     <div style="display:flex;flex-direction:column;gap:16px">
       <h2>Наше фирменное — чешский трдельник</h2>
@@ -334,6 +333,18 @@ footer .links button{background:none;border:0;padding:0;color:#5b4a8a;text-decor
   </div>
 </section>
 
+<!-- ПРЕИМУЩЕСТВА -->
+<section id="advantages" class="sec soft">
+  <span class="tag">04 · Преимущества</span>
+  <h2>Почему к нам возвращаются</h2>
+  <div class="g4">
+    <div class="card"><div class="ph" style="width:48px;height:48px;padding:0">ico</div><h3>Свежее каждый день</h3><p class="small">Каждое утро на витрине — свежая выпечка и десерты. Приходите за любимым или пробуйте новое.</p></div>
+    <div class="card"><div class="ph" style="width:48px;height:48px;padding:0">ico</div><h3>Трдельники для вас</h3><p class="small">Фирменную позицию готовим при вас за 15 минут. Всегда горячий, хрустящий и с любимой начинкой.</p></div>
+    <div class="card"><div class="ph" style="width:48px;height:48px;padding:0">ico</div><h3>Уютное место</h3><p class="small">Можно взять с собой или посидеть у нас — за вкусными разговорами.</p></div>
+    <div class="card"><div class="ph" style="width:48px;height:48px;padding:0">ico</div><h3>Доставка</h3><p class="small">Наши партнёры — Яндекс Доставка — привезут ваш заказ по Москве и Московской области.</p></div>
+  </div>
+</section>
+
 <!-- ТОРТЫ НА ЗАКАЗ (СКОРО) -->
 <section id="cakes" class="sec soonsec">
   <span class="tag">05 · Торты на заказ — скоро</span>
@@ -359,60 +370,93 @@ footer .links button{background:none;border:0;padding:0;color:#5b4a8a;text-decor
 
 <!-- ГАСТРОБОКСЫ (СКОРО) -->
 <section id="gastro" class="sec soonsec soft">
-  <span class="tag">06 · Гастробоксы — скоро</span>
+  <span class="tag">06 · Гастробоксы на заказ — скоро</span>
   <div class="lead">
     <div>
-      <h2>Гастробоксы<span class="soon-badge">Скоро</span></h2>
-      <div class="ph descph">ОПИСАНИЕ РАЗДЕЛА<br>Текст о гастробоксах: состав, на сколько персон, для какого повода <span class="todo">[от заказчика]</span></div>
+      <h2>Гастробоксы на заказ<span class="soon-badge">Скоро</span></h2>
+      <div class="gb-intro">
+        <p class="lead-p">Гастробокс — это готовый набор закусок и десертов.</p>
+        <p>Хотите угостить гостей красиво и без хлопот? Мы возьмём организацию на себя. Соберём гастробокс с закусками и десертами, оформим и приготовим к подаче.</p>
+        <p>Составим меню под ваш формат, пожелания и бюджет. Красивое оформление и аккуратная подача гарантированы.</p>
+      </div>
     </div>
     <div>
       <p class="small">Раздел готовится к запуску. Уже сейчас можно оставить заявку — свяжемся и всё обсудим.</p>
-      <button class="btn" type="button" data-soon="Гастробоксы">Заказать гастробокс</button>
+      <button class="btn" type="button" data-soon="Гастробоксы на заказ">Заказать гастробокс</button>
     </div>
   </div>
+  <div class="g2" style="gap:24px">
+    <div class="card">
+      <h3>Что можно заказать</h3>
+      <ul class="blist">
+        <li>Канапе и сэндвичи</li>
+        <li>Холодные и горячие закуски</li>
+        <li>Салаты</li>
+        <li>Основные блюда и гарниры</li>
+        <li>Десерты, торты и сладкие угощения</li>
+        <li>Детские боксы — собираем индивидуально под ваши пожелания</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Организуем питание для мероприятий любого формата и масштаба</h3>
+      <ul class="blist">
+        <li>Фуршеты и банкеты</li>
+        <li>Кофе-брейки</li>
+        <li>Свадьбы и дни рождения</li>
+        <li>Корпоративы и конференции</li>
+        <li>Мальчишники и девичники</li>
+        <li>Детские праздники</li>
+      </ul>
+    </div>
+  </div>
+  <div class="gb-cta">
+    <div style="display:flex;flex-direction:column;gap:10px;min-width:0">
+      <p class="big">Мы не просто приготовим еду — мы поможем создать атмосферу праздника, который хочется запомнить. Ваша задача — наслаждаться, всё остальное мы возьмём на себя.</p>
+      <p>Расскажите нам о вашем мероприятии — количестве гостей, дате и формате. Мы предложим подходящее меню и поможем рассчитать заказ под ваш бюджет.</p>
+    </div>
+    <button class="btn" type="button" data-soon="Гастробоксы на заказ" data-hint="Количество гостей, дата, формат мероприятия, бюджет">Рассказать о мероприятии</button>
+  </div>
   <div class="g4">
-    <div class="card soon-card"><div class="ph">ФОТО<br>Гастробокс 1</div><span class="tag">Гастробоксы · пример</span><h3>Гастробокс 1</h3><p class="small">Краткое описание позиции <span class="todo">[от заказчика]</span></p><div class="foot" style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto"><span class="price"><span class="todo">[цена]</span></span><button class="btn sm" type="button" data-soon="Гастробоксы" data-item="Гастробокс 1">Заказать</button></div></div>
-    <div class="card soon-card"><div class="ph">ФОТО<br>Гастробокс 2</div><span class="tag">Гастробоксы · пример</span><h3>Гастробокс 2</h3><p class="small">Краткое описание позиции <span class="todo">[от заказчика]</span></p><div class="foot" style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto"><span class="price"><span class="todo">[цена]</span></span><button class="btn sm" type="button" data-soon="Гастробоксы" data-item="Гастробокс 2">Заказать</button></div></div>
-    <div class="card soon-card"><div class="ph">ФОТО<br>Гастробокс 3</div><span class="tag">Гастробоксы · пример</span><h3>Гастробокс 3</h3><p class="small">Краткое описание позиции <span class="todo">[от заказчика]</span></p><div class="foot" style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto"><span class="price"><span class="todo">[цена]</span></span><button class="btn sm" type="button" data-soon="Гастробоксы" data-item="Гастробокс 3">Заказать</button></div></div>
-    <div class="card soon-card"><div class="ph">ФОТО<br>Гастробокс 4</div><span class="tag">Гастробоксы · пример</span><h3>Гастробокс 4</h3><p class="small">Краткое описание позиции <span class="todo">[от заказчика]</span></p><div class="foot" style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto"><span class="price"><span class="todo">[цена]</span></span><button class="btn sm" type="button" data-soon="Гастробоксы" data-item="Гастробокс 4">Заказать</button></div></div>
+    <div class="card soon-card"><div class="ph">ФОТО<br>Гастробокс 1</div><span class="tag">Гастробоксы на заказ · пример</span><h3>Гастробокс 1</h3><p class="small">Краткое описание позиции <span class="todo">[от заказчика]</span></p><div class="foot" style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto"><span class="price"><span class="todo">[цена]</span></span><button class="btn sm" type="button" data-soon="Гастробоксы на заказ" data-item="Гастробокс 1">Заказать</button></div></div>
+    <div class="card soon-card"><div class="ph">ФОТО<br>Гастробокс 2</div><span class="tag">Гастробоксы на заказ · пример</span><h3>Гастробокс 2</h3><p class="small">Краткое описание позиции <span class="todo">[от заказчика]</span></p><div class="foot" style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto"><span class="price"><span class="todo">[цена]</span></span><button class="btn sm" type="button" data-soon="Гастробоксы на заказ" data-item="Гастробокс 2">Заказать</button></div></div>
+    <div class="card soon-card"><div class="ph">ФОТО<br>Гастробокс 3</div><span class="tag">Гастробоксы на заказ · пример</span><h3>Гастробокс 3</h3><p class="small">Краткое описание позиции <span class="todo">[от заказчика]</span></p><div class="foot" style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto"><span class="price"><span class="todo">[цена]</span></span><button class="btn sm" type="button" data-soon="Гастробоксы на заказ" data-item="Гастробокс 3">Заказать</button></div></div>
+    <div class="card soon-card"><div class="ph">ФОТО<br>Гастробокс 4</div><span class="tag">Гастробоксы на заказ · пример</span><h3>Гастробокс 4</h3><p class="small">Краткое описание позиции <span class="todo">[от заказчика]</span></p><div class="foot" style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto"><span class="price"><span class="todo">[цена]</span></span><button class="btn sm" type="button" data-soon="Гастробоксы на заказ" data-item="Гастробокс 4">Заказать</button></div></div>
   </div>
   <p class="note">Каталог раздела: заказчик добавляет фото, названия, описания и цены в Tilda Store. Пока раздел в статусе «скоро», кнопки ведут на форму заявки.</p>
 </section>
 
 <!-- СЛАДКИЕ ПОДАРКИ (СКОРО) -->
 <section id="gifts" class="sec soonsec">
-  <span class="tag">07 · Сладкие подарки — скоро</span>
+  <span class="tag">07 · Сладкие подарки на заказ — скоро</span>
   <div class="lead">
     <div>
-      <h2>Сладкие подарки<span class="soon-badge">Скоро</span></h2>
+      <h2>Сладкие подарки на заказ<span class="soon-badge">Скоро</span></h2>
       <div class="ph descph">ОПИСАНИЕ РАЗДЕЛА<br>Текст о сладких подарках: наборы, упаковка, корпоративные заказы <span class="todo">[от заказчика]</span></div>
     </div>
     <div>
       <p class="small">Раздел готовится к запуску. Уже сейчас можно оставить заявку — свяжемся и всё обсудим.</p>
-      <button class="btn" type="button" data-soon="Сладкие подарки">Заказать подарок</button>
+      <button class="btn" type="button" data-soon="Сладкие подарки на заказ">Заказать подарок</button>
     </div>
   </div>
   <div class="g4">
-    <div class="card soon-card"><div class="ph">ФОТО<br>Подарок 1</div><span class="tag">Сладкие подарки · пример</span><h3>Подарок 1</h3><p class="small">Краткое описание позиции <span class="todo">[от заказчика]</span></p><div class="foot" style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto"><span class="price"><span class="todo">[цена]</span></span><button class="btn sm" type="button" data-soon="Сладкие подарки" data-item="Подарок 1">Заказать</button></div></div>
-    <div class="card soon-card"><div class="ph">ФОТО<br>Подарок 2</div><span class="tag">Сладкие подарки · пример</span><h3>Подарок 2</h3><p class="small">Краткое описание позиции <span class="todo">[от заказчика]</span></p><div class="foot" style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto"><span class="price"><span class="todo">[цена]</span></span><button class="btn sm" type="button" data-soon="Сладкие подарки" data-item="Подарок 2">Заказать</button></div></div>
-    <div class="card soon-card"><div class="ph">ФОТО<br>Подарок 3</div><span class="tag">Сладкие подарки · пример</span><h3>Подарок 3</h3><p class="small">Краткое описание позиции <span class="todo">[от заказчика]</span></p><div class="foot" style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto"><span class="price"><span class="todo">[цена]</span></span><button class="btn sm" type="button" data-soon="Сладкие подарки" data-item="Подарок 3">Заказать</button></div></div>
-    <div class="card soon-card"><div class="ph">ФОТО<br>Подарок 4</div><span class="tag">Сладкие подарки · пример</span><h3>Подарок 4</h3><p class="small">Краткое описание позиции <span class="todo">[от заказчика]</span></p><div class="foot" style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto"><span class="price"><span class="todo">[цена]</span></span><button class="btn sm" type="button" data-soon="Сладкие подарки" data-item="Подарок 4">Заказать</button></div></div>
+    <div class="card soon-card"><div class="ph">ФОТО<br>Подарок 1</div><span class="tag">Сладкие подарки на заказ · пример</span><h3>Подарок 1</h3><p class="small">Краткое описание позиции <span class="todo">[от заказчика]</span></p><div class="foot" style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto"><span class="price"><span class="todo">[цена]</span></span><button class="btn sm" type="button" data-soon="Сладкие подарки на заказ" data-item="Подарок 1">Заказать</button></div></div>
+    <div class="card soon-card"><div class="ph">ФОТО<br>Подарок 2</div><span class="tag">Сладкие подарки на заказ · пример</span><h3>Подарок 2</h3><p class="small">Краткое описание позиции <span class="todo">[от заказчика]</span></p><div class="foot" style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto"><span class="price"><span class="todo">[цена]</span></span><button class="btn sm" type="button" data-soon="Сладкие подарки на заказ" data-item="Подарок 2">Заказать</button></div></div>
+    <div class="card soon-card"><div class="ph">ФОТО<br>Подарок 3</div><span class="tag">Сладкие подарки на заказ · пример</span><h3>Подарок 3</h3><p class="small">Краткое описание позиции <span class="todo">[от заказчика]</span></p><div class="foot" style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto"><span class="price"><span class="todo">[цена]</span></span><button class="btn sm" type="button" data-soon="Сладкие подарки на заказ" data-item="Подарок 3">Заказать</button></div></div>
+    <div class="card soon-card"><div class="ph">ФОТО<br>Подарок 4</div><span class="tag">Сладкие подарки на заказ · пример</span><h3>Подарок 4</h3><p class="small">Краткое описание позиции <span class="todo">[от заказчика]</span></p><div class="foot" style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto"><span class="price"><span class="todo">[цена]</span></span><button class="btn sm" type="button" data-soon="Сладкие подарки на заказ" data-item="Подарок 4">Заказать</button></div></div>
   </div>
   <p class="note">Каталог раздела: заказчик добавляет фото, названия, описания и цены в Tilda Store. Пока раздел в статусе «скоро», кнопки ведут на форму заявки.</p>
 </section>
 
-
-<!-- ПРЕИМУЩЕСТВА -->
-<section class="sec">
-  <span class="tag">08 · Преимущества</span>
-  <h2>Почему к нам возвращаются</h2>
-  <div class="g4">
-    <div class="card"><div class="ph" style="width:48px;height:48px;padding:0">ico</div><h3>Свежее каждый день</h3><p class="small">Выпечку и десерты готовим ежедневно — к открытию витрина уже полная.</p></div>
-    <div class="card"><div class="ph" style="width:48px;height:48px;padding:0">ico</div><h3>Трдельники при вас</h3><p class="small">Фирменную позицию готовим за 15 минут — всегда горячая и хрустящая.</p></div>
-    <div class="card"><div class="ph" style="width:48px;height:48px;padding:0">ico</div><h3>Уютное место</h3><p class="small">Можно взять с собой или посидеть у нас в Путилково.</p></div>
-    <div class="card"><div class="ph" style="width:48px;height:48px;padding:0">ico</div><h3>Доставка</h3><p class="small">Привезём Яндекс Доставкой по Москве и Московской области.</p></div>
+<!-- АКЦИИ -->
+<section id="promo" class="sec soft">
+  <span class="tag">08 · Акции</span>
+  <h2>Акции и спецпредложения</h2>
+  <div class="g3">
+    <div class="promo"><span class="lbl">Акция</span><div class="ph" style="height:180px">ФОТО / БАННЕР<br>акции 1</div><h3>Название акции 1</h3><p class="small">Условия акции и срок действия <span class="todo">[от заказчика]</span></p><div><a class="btn2 sm" href="#menu">Выбрать в меню</a></div></div>
+    <div class="promo"><span class="lbl">Акция</span><div class="ph" style="height:180px">ФОТО / БАННЕР<br>акции 2</div><h3>Название акции 2</h3><p class="small">Условия акции и срок действия <span class="todo">[от заказчика]</span></p><div><a class="btn2 sm" href="#menu">Выбрать в меню</a></div></div>
+    <div class="promo"><span class="lbl">Акция</span><div class="ph" style="height:180px">ФОТО / БАННЕР<br>акции 3</div><h3>Название акции 3</h3><p class="small">Условия акции и срок действия <span class="todo">[от заказчика]</span></p><div><a class="btn2 sm" href="#menu">Выбрать в меню</a></div></div>
   </div>
-  <span class="todo">[преимущества — подтвердить с заказчиком]</span>
+  <p class="note">Количество карточек любое: добавляются и убираются в Tilda. Если акций нет — блок можно временно скрыть.</p>
 </section>
 
 <!-- КАК ЗАКАЗАТЬ -->
@@ -426,11 +470,18 @@ footer .links button{background:none;border:0;padding:0;color:#5b4a8a;text-decor
     <div class="card" style="padding:16px"><span class="tag">4</span><p style="font-size:15px;color:var(--ink)">Выберите дату и время</p></div>
     <div class="card" style="padding:16px"><span class="tag">5</span><p style="font-size:15px;color:var(--ink)">Оплатите заказ онлайн</p></div>
   </div>
-  <div class="g2" style="gap:24px">
+  <div class="g3">
     <div class="card" style="background:var(--soft)">
       <h3>Самовывоз</h3>
-      <p>МО, Путилково, ул. Новотушинская, д. 2<br>Ежедневно с 10:00 до 22:00</p>
-      <p class="small">Трдельники готовим к заказу минимум за 1 час, остальные позиции — <span class="todo">[срок уточнить]</span>.</p>
+      <p>Трдельники, выпечка и десерты с витрины — соберём к вашему приходу.</p>
+      <p>Заказ можно оформить заранее — всё будет готово к выбранному времени.</p>
+      <p class="small">МО, Путилково, ул. Новотушинская, д. 2 · ежедневно с 10:00 до 22:00</p>
+    </div>
+    <div class="card" style="background:var(--soft)">
+      <h3>Заказные позиции</h3>
+      <p>Торты, гастробоксы и сладкие подарки — оформляются заранее.</p>
+      <p>Сроки и условия — в разделах «На заказ».</p>
+      <div class="row" style="gap:8px"><a class="chip" href="#cakes">Торты</a><a class="chip" href="#gastro">Гастробоксы</a><a class="chip" href="#gifts">Подарки</a></div>
     </div>
     <div class="card" style="background:var(--soft)">
       <h3>Доставка</h3>
@@ -623,12 +674,12 @@ footer .links button{background:none;border:0;padding:0;color:#5b4a8a;text-decor
     <button class="close" style="position:static" type="button" id="mmClose" aria-label="Закрыть меню">×</button>
   </div>
   <nav>
-    <a href="#promo">Акции</a>
     <a href="#menu">Ассортимент</a>
     <a href="#trdelnik">Трдельник</a>
     <a href="#cakes">Торты на заказ</a>
-    <a href="#gastro">Гастробоксы</a>
-    <a href="#gifts">Сладкие подарки</a>
+    <a href="#gastro">Гастробоксы на заказ</a>
+    <a href="#gifts">Сладкие подарки на заказ</a>
+    <a href="#promo">Акции</a>
     <a href="#delivery">Доставка</a>
     <a href="#contacts">Контакты</a>
   </nav>
@@ -1049,6 +1100,7 @@ footer .links button{background:none;border:0;padding:0;color:#5b4a8a;text-decor
     $('#soonTitle').textContent = b.dataset.soon;
     $('#soonDone').hidden = true;
     $('#s-comm').value = b.dataset.item ? b.dataset.item + ': ' : '';
+    $('#s-comm').placeholder = b.dataset.hint || (b.dataset.soon.indexOf('Гастро')===0 ? 'Количество гостей, дата, формат мероприятия, бюджет' : 'Повод, дата, количество, пожелания');
     openModal('#m-soon');
   });
   /* быстрые кнопки: подсветка выбранной категории меню */
