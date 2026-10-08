@@ -540,7 +540,7 @@ footer .links button{background:none;border:0;padding:0;color:#5b4a8a;text-decor
     </div>
     <div class="card" style="background:var(--soft)">
       <h3>Заказные позиции</h3>
-      <p>Торты, гастробоксы и сладкие подарки — оформляются заранее.</p>
+      <p>Торты, пироги, гастробоксы и съедобные подарки — оформляются заранее.</p>
       <p>Сроки и условия — в разделах «На заказ».</p>
       <div class="row" style="gap:8px"><a class="chip" href="#cakes">Торты</a><a class="chip" href="#pies">Пироги</a><a class="chip" href="#gastro">Гастробоксы</a><a class="chip" href="#gifts">Подарки</a></div>
     </div>
@@ -903,8 +903,19 @@ footer .links button{background:none;border:0;padding:0;color:#5b4a8a;text-decor
       b[1].onclick = function(){ changeQty(line.key, +1); };
     } else {
       box.innerHTML = '<button class="btn sm" type="button">' + (SECTION_CATS.indexOf(p.cat)>-1 ? 'Заказать' : (p.options ? 'Выбрать' : 'В корзину')) + '</button>';
-      box.querySelector('button').onclick = function(){ p.options ? openProduct(p.id) : addToCart(p.id, 1, {}); };
+      box.querySelector('button').onclick = function(){
+        if (p.options) return openProduct(p.id);
+        addToCart(p.id, 1, {});
+        if (ORDER_CATS.indexOf(p.cat)>-1) goOrder();
+      };
     }
+  }
+  var ORDER_CATS = ['cakes','pies','gastro','gifts']; // заказные позиции: после добавления сразу к оформлению заказа
+  function goOrder(){
+    setTimeout(function(){
+      document.getElementById('order').scrollIntoView({behavior:'smooth'});
+      setTimeout(function(){ var f = document.getElementById('f-name'); if (f && !f.value) f.focus({preventScroll:true}); }, 600);
+    }, 250);
   }
   var currentCat = 'all';
   $$('.tabs button').forEach(function(b){
@@ -1088,6 +1099,7 @@ footer .links button{background:none;border:0;padding:0;color:#5b4a8a;text-decor
     var o = {}; for (var k in pm.opts) o[k] = pm.opts[k];
     addToCart(pm.p.id, pm.qty, o);
     closeModal($('#m-product'));
+    if (ORDER_CATS.indexOf(pm.p.cat)>-1) goOrder();
   };
 
   /* документы */
