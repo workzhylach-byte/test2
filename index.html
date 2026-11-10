@@ -571,6 +571,7 @@ x-c.rc,x-c.rwi{display:inline-block;will-change:transform}
 .gsl__bar span{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.14);overflow:hidden}
 .gsl__bar span i{display:block;height:100%;width:100%;background:var(--lime);transform:scaleX(0);transform-origin:left}
 .gsl__bar span.done i{transform:scaleX(1)}
+.gsl__stage img{-webkit-user-drag:none;user-select:none;pointer-events:none}
 .gsl__stage{position:relative;aspect-ratio:4/5;perspective:1100px;touch-action:pan-y;user-select:none;-webkit-user-select:none}
 .gsl__card{position:absolute;inset:0;border-radius:24px;overflow:hidden;transform-origin:50% 100%;transition:transform .75s var(--ease),opacity .6s var(--ease),filter .6s;will-change:transform;background:var(--ink3);box-shadow:0 30px 60px rgba(0,0,0,.45)}
 .gsl__card.drag{transition:none}
@@ -622,7 +623,9 @@ linear-gradient(var(--c),var(--c)) bottom right/var(--l) var(--t) no-repeat,line
   .coaches{display:flex;grid-template-columns:none;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;gap:12px;margin:0 calc(-1*var(--pad));padding:8px var(--pad) 6px;scroll-padding:0 var(--pad);scrollbar-width:none;perspective:none;-webkit-overflow-scrolling:touch}
   .coaches::-webkit-scrollbar{display:none}
   .coaches .cc,.coaches .cc:last-child{flex:0 0 80%;grid-column:auto;scroll-snap-align:center;transform:scale(.9) translateY(10px);opacity:.5;transition:transform .6s var(--ease),opacity .6s var(--ease)}
-  .coaches .cc.on{transform:none;opacity:1}
+  .coaches .cc.on{transform:none!important;opacity:1!important}
+  .coaches .cc:not(.on){transform:scale(.9) translateY(10px)!important;opacity:.5!important}
+  .coaches .cc__card{rotate:none}
   .coaches .cc:last-child .cc__card,.coaches .cc__card{aspect-ratio:4/5;transform:none!important}
   .coaches .cc:first-child{margin-left:2%}.coaches .cc:last-child{margin-right:2%}
   .csl-ui{display:flex;align-items:center;gap:16px;margin-top:20px}
@@ -1549,7 +1552,7 @@ function scrollAnims(){
   $$('.gal .ph').forEach(el=>{G.fromTo(el,{clipPath:'inset(22% 12% 22% 12% round 20px)'},{clipPath:'inset(0% 0% 0% 0% round 20px)',ease:'none',scrollTrigger:{trigger:el,start:'top 98%',end:'top 45%',scrub:true}});
     G.fromTo($('.ph__in',el),{scale:1.35,yPercent:-6},{scale:1,yPercent:6,ease:'none',scrollTrigger:{trigger:el,start:'top bottom',end:'bottom top',scrub:true}})});
   // coaches stagger depth
-  if(innerWidth>760)G.from('.cc',{y:120,rotateX:-25,opacity:0,stagger:.12,duration:1.4,ease:'expo.out',transformPerspective:1200,scrollTrigger:{trigger:'.coaches',start:'top 85%'}});
+  G.matchMedia().add('(min-width:761px)',()=>{G.from('.cc',{y:120,rotateX:-25,opacity:0,stagger:.12,duration:1.4,ease:'expo.out',transformPerspective:1200,scrollTrigger:{trigger:'.coaches',start:'top 85%'}});});
   // prices
   // camps
   // camps: шторка фона + параллакс, буквы собираются из разлёта, контур заливается
@@ -1599,7 +1602,9 @@ function typeTargets(){
   els=els.filter(e=>!e.closest(TYPE_EXCL)&&e.textContent.trim().length>0&&!e.querySelector('h2,h3,h4,p,li,dd'));
   const set=new Set(els);return els.filter(e=>{let p=e.parentElement;while(p){if(set.has(p))return false;p=p.parentElement}return true});
 }
-let dirTW=null,H2I=0;
+let dirTW=null,H2I=0;const PENDING=[];
+function flushPending(){PENDING.forEach(o=>{if(o.isDone())return;const r=o.el.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>-innerHeight*3&&o.el.getClientRects().length)o.fire()})}
+addEventListener('resize',()=>{clearTimeout(flushPending.t);flushPending.t=setTimeout(()=>{ST&&ST.refresh();flushPending()},350)});
 const SCR='ABCDEFGHJKLMNOPRSTUVXYZАБВГДЕЖЗИКЛМНОПРСТУФХЦ0123456789#/+*';
 function scramble(el){
   const nodes=[];const tw=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);let n;while(n=tw.nextNode())if(n.textContent.trim())nodes.push([n,n.textContent]);
@@ -1637,9 +1642,10 @@ function initTyping(els){
   els.forEach((el,i)=>{
     const play=revealFor(el,i);if(!play)return;
     const inDir=el.closest('#dirTrack');const trg=el.closest('[data-type-trigger]')||el;
-    const cfg={trigger:inDir&&dirTW?el.closest('.dcard'):trg,start:inDir&&dirTW?'left 85%':(el.closest('footer')?'top bottom':'top 88%'),once:true,onEnter:play};
-    if(inDir&&dirTW)cfg.containerAnimation=dirTW;
-    ST.create(cfg);
+    let done=false;const fire=()=>{if(done)return;done=true;play()};
+    const st=ST.create({trigger:trg,start:el.closest('footer')?'top bottom':'top 88%',once:true,onEnter:fire});
+    if(inDir)ST.create({trigger:'.dir',start:'top 75%',once:true,onEnter:fire});
+    PENDING.push({el,fire,isDone:()=>done});
   });
 }
 
@@ -1786,6 +1792,7 @@ function gallerySlider(){
     c.innerHTML=`<div class="${ph.className}">${ph.innerHTML}</div><i class="gsl__cn"></i><div class="gsl__info"><div><b>${String(i+1).padStart(2,'0')} — Галерея</b><h4>${t}</h4></div>${photo?`<span class="zoom">${ARR.replace('M1 8h14M9 2l6 6-6 6','M2 14L14 2M6 2h8v8')}</span>`:''}</div>`;
     if(photo){c.setAttribute('data-lb','');c.dataset.lbcap=t}
     stage.appendChild(c);return c});
+  stage.addEventListener('dragstart',e=>e.preventDefault());$$('img',stage).forEach(i=>i.draggable=false);
   const n=cards.length;let cur=0,dx=0,w=1,timer=null,auto=null,inView=false;
   const lay=()=>{w=stage.clientWidth||1;cards.forEach((c,i)=>{let d=((i-cur)%n+n)%n;if(d===n-1&&n>2)d=-1;
       const p=Math.min(1,Math.abs(dx)/w);let tf,op=1,z=n-Math.abs(d);
