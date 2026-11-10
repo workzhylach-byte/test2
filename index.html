@@ -50,7 +50,7 @@ svg,canvas{display:block}
 .loader__bar i{position:absolute;inset:0;background:var(--lime);transform-origin:left;transform:scaleX(0)}
 
 /* ---------- cursor / grain / progress ---------- */
-.cur{position:fixed;left:0;top:0;z-index:400;pointer-events:none;display:none}
+.cur{position:fixed;left:0;top:0;z-index:900;pointer-events:none;display:none}
 .has-cur .cur{display:block}
 .cur__dot,.cur__ring{position:fixed;left:0;top:0;border-radius:50%;transform:translate(-50%,-50%)}
 .cur__dot{width:6px;height:6px;background:var(--lime)}
@@ -681,6 +681,53 @@ section,footer{max-width:100vw}
 .psl-hint i{width:26px;height:26px;border-radius:50%;border:1px solid var(--lime);position:relative;animation:ghint 2.2s var(--ease) infinite}
 .psl-hint i::after{content:'';position:absolute;inset:8px;border-radius:50%;background:var(--lime)}
 @media (max-width:1100px){.psl-hint{display:flex}}
+/* ================= TEAM — новый блок тренеров ================= */
+.team{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,5vw,80px);align-items:center;margin-top:clamp(30px,4vw,60px)}
+.team__side{display:flex;flex-direction:column;gap:30px}
+.team__intro{max-width:440px;font-size:16px}
+.team__list{border-top:1px solid var(--line-d)}
+.team__row{position:relative;width:100%;display:grid;grid-template-columns:52px 1fr auto;align-items:center;gap:14px;padding:24px 0;border-bottom:1px solid var(--line-d);text-align:left;color:var(--ink);cursor:pointer;transition:padding .6s var(--ease)}
+.team__n{font-size:12px;letter-spacing:.08em;color:var(--mute-d);transition:color .4s}
+.team__t b{display:block;font-family:var(--ff-d);font-weight:500;font-size:clamp(34px,3.6vw,58px);line-height:1;letter-spacing:-.012em;color:rgba(19,20,23,.22);transition:color .5s,transform .6s var(--ease)}
+.team__t small{display:flex;align-items:center;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--mute-d);max-height:0;opacity:0;overflow:hidden;transition:max-height .6s var(--ease),opacity .5s,margin .6s var(--ease)}
+.team__row:hover .team__t b{color:rgba(19,20,23,.6)}
+.team__row.on .team__t b{color:var(--ink)}
+.team__row.on .team__n{color:var(--gold-d)}
+.team__row.on .team__t small{max-height:44px;opacity:1;margin-top:12px}
+.team__row.on{padding-left:16px}
+.team__go{width:50px;height:50px;border-radius:50%;border:1px solid var(--line-d);display:grid;place-items:center;color:var(--ink);transition:background .4s,color .4s,border-color .4s,transform .6s var(--ease)}
+.team__go svg{width:15px}
+.team__row.on .team__go{background:var(--ink);color:var(--bone);border-color:var(--ink);transform:rotate(-45deg)}
+.team__prog{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--gold-d);transform:scaleX(0);transform-origin:left;pointer-events:none}
+.team__row.on .team__prog{animation:tprog 6s linear forwards}
+.team.paused .team__prog{animation-play-state:paused!important}
+@keyframes tprog{to{transform:scaleX(1)}}
+.team__media{position:relative;height:min(78vh,700px);border-radius:30px;overflow:hidden;background:var(--ink);isolation:isolate;box-shadow:0 40px 90px rgba(19,20,23,.18)}
+.team__slide{position:absolute;inset:0;z-index:1;clip-path:inset(0 0 0 100%);pointer-events:none}
+.team__slide.on{z-index:2;clip-path:inset(0 0 0 0);pointer-events:auto}
+.team__slide.was{z-index:1;clip-path:inset(0 0 0 0)}
+.team__slide .ph{position:absolute;inset:-8% 0;border-radius:0}
+.team__slide .ph__in::after{display:none}
+.team__shade{position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(180deg,rgba(12,13,16,.45),transparent 30%,transparent 60%,rgba(12,13,16,.8))}
+.team__big{position:absolute;left:clamp(20px,2.4vw,34px);right:clamp(20px,2.4vw,34px);top:clamp(14px,2vw,26px);height:1.08em;z-index:4;overflow:hidden;pointer-events:none;font-family:var(--ff-d);font-weight:600;font-size:clamp(90px,10vw,180px);line-height:1;letter-spacing:-.02em;padding-bottom:.06em}
+.team__big span{position:absolute;left:0;top:0;white-space:nowrap;display:inline-block;color:transparent;background:linear-gradient(165deg,var(--lime) 0%,#DCE6FF 40%,var(--bone) 62%,rgba(255,255,255,.35) 100%);-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 10px 30px rgba(0,0,0,.35))}
+.team__cn{position:absolute;inset:16px;z-index:4;pointer-events:none;--c:var(--lime);--t:2px;--l:26px;background:
+linear-gradient(var(--c),var(--c)) top left/var(--l) var(--t) no-repeat,linear-gradient(var(--c),var(--c)) top left/var(--t) var(--l) no-repeat,
+linear-gradient(var(--c),var(--c)) top right/var(--l) var(--t) no-repeat,linear-gradient(var(--c),var(--c)) top right/var(--t) var(--l) no-repeat,
+linear-gradient(var(--c),var(--c)) bottom left/var(--l) var(--t) no-repeat,linear-gradient(var(--c),var(--c)) bottom left/var(--t) var(--l) no-repeat,
+linear-gradient(var(--c),var(--c)) bottom right/var(--l) var(--t) no-repeat,linear-gradient(var(--c),var(--c)) bottom right/var(--t) var(--l) no-repeat;filter:drop-shadow(0 0 6px rgba(143,177,255,.6))}
+.team__cap{position:absolute;left:clamp(22px,2.6vw,38px);right:clamp(22px,2.6vw,38px);bottom:clamp(22px,2.6vw,36px);z-index:4;display:flex;align-items:center;gap:16px;color:var(--bone);pointer-events:none}
+.team__num{font-size:11px;letter-spacing:.08em;padding:6px 9px;border-radius:8px;background:var(--lime);color:var(--ink)}
+.team__capt{flex:1;font-family:var(--ff-d);font-weight:500;font-size:clamp(20px,1.8vw,28px);letter-spacing:-.01em}
+.team__zoom{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.45);display:grid;place-items:center;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);background:rgba(12,13,16,.25)}
+.team__zoom svg{width:15px}
+@media (max-width:900px){
+  .team{grid-template-columns:1fr;gap:26px}
+  .team__media{order:-1;height:auto;aspect-ratio:4/5;max-height:76vh;touch-action:pan-y;border-radius:24px}
+  .team__row{padding:18px 0;grid-template-columns:40px 1fr auto}
+  .team__t b{font-size:32px}
+  .team__go{width:42px;height:42px}
+}
 </style>
 </head>
 <body class="is-loading">
@@ -865,12 +912,24 @@ section,footer{max-width:100vw}
       <div><div class="slabel mono"><b>05</b>Команда</div><h2 class="h2" data-split>Тренеры клуба</h2><p class="lead" data-r>От первого занятия до подготовки к турниру</p></div>
       <a href="#" class="btn" data-r>Все тренеры <svg viewBox="0 0 14 14"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></a>
     </div>
-    <div class="coach__g">
-      <div class="coach__l" data-r><p>Теннис, падел и физическая подготовка. Выберите тренера по направлению, возрасту учеников и уровню игры.</p><button class="btn" data-modal="trial" data-preset="Индивидуальная тренировка">Индивидуальная тренировка</button></div>
-      <div class="coaches">
-        <div class="cc" data-r><div class="cc__card tilt"><div class="ph" data-ph="coach" data-cap="Портрет тренера на корте"></div><div class="cc__big">Т</div><i class="cc__cn" aria-hidden="true"></i><span class="cc__ring"><svg viewBox="0 0 16 16"><path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></span><div class="cc__sheen"></div></div><h3>Теннис</h3><p>Имя и опыт</p><span class="tbd">Требует уточнения</span></div>
-        <div class="cc" data-r><div class="cc__card tilt"><div class="ph" data-ph="coachp" data-cap="Тренер по паделу"></div><div class="cc__big">П</div><i class="cc__cn" aria-hidden="true"></i><span class="cc__ring"><svg viewBox="0 0 16 16"><path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></span><div class="cc__sheen"></div></div><h3>Падел</h3><p>Имя и опыт</p><span class="tbd">Требует уточнения</span></div>
-        <div class="cc" data-r><div class="cc__card tilt"><div class="ph" data-ph="coachg" data-cap="Тренер по ОФП"></div><div class="cc__big">ОФП</div><i class="cc__cn" aria-hidden="true"></i><span class="cc__ring"><svg viewBox="0 0 16 16"><path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></span><div class="cc__sheen"></div></div><h3>ОФП</h3><p>Имя и опыт</p><span class="tbd">Требует уточнения</span></div>
+    <div class="team" id="team">
+      <div class="team__side">
+        <p class="team__intro" data-r>Теннис, падел и физическая подготовка. Выберите тренера по направлению, возрасту учеников и уровню игры.</p>
+        <div class="team__list" role="tablist" aria-label="Направления тренеров">
+        <button class="team__row on" role="tab" aria-selected="true" data-i="0"><span class="team__n mono">01</span><span class="team__t"><b>Теннис</b><small>Имя и опыт <span class="tbd">Требует уточнения</span></small></span><span class="team__go"><svg viewBox="0 0 16 16"><path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></span><i class="team__prog"></i></button>
+        <button class="team__row" role="tab" aria-selected="false" data-i="1"><span class="team__n mono">02</span><span class="team__t"><b>Падел</b><small>Имя и опыт <span class="tbd">Требует уточнения</span></small></span><span class="team__go"><svg viewBox="0 0 16 16"><path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></span><i class="team__prog"></i></button>
+        <button class="team__row" role="tab" aria-selected="false" data-i="2"><span class="team__n mono">03</span><span class="team__t"><b>ОФП</b><small>Имя и опыт <span class="tbd">Требует уточнения</span></small></span><span class="team__go"><svg viewBox="0 0 16 16"><path d="M1 8h14M9 2l6 6-6 6" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></span><i class="team__prog"></i></button>
+        </div>
+        <div><button class="btn" data-modal="trial" data-preset="Индивидуальная тренировка">Индивидуальная тренировка</button></div>
+      </div>
+      <div class="team__media">
+      <div class="team__slide on" data-big="Т" data-cap="Тренер по теннису"><div class="ph" data-ph="coach" data-cap="Тренер по теннису"></div></div>
+      <div class="team__slide" data-big="П" data-cap="Тренер по паделу"><div class="ph" data-ph="coachp" data-cap="Тренер по паделу"></div></div>
+      <div class="team__slide" data-big="ОФП" data-cap="Тренер по ОФП"><div class="ph" data-ph="coachg" data-cap="Тренер по ОФП"></div></div>
+      <div class="team__shade" aria-hidden="true"></div>
+        <div class="team__big" aria-hidden="true"><span>Т</span></div>
+        <i class="team__cn" aria-hidden="true"></i>
+        <div class="team__cap"><span class="mono team__num">01 / 03</span><b class="team__capt">Тренер по теннису</b><span class="team__zoom" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M2 14L14 2M6 2h8v8" stroke="currentColor" fill="none" stroke-width="1.4"/></svg></span></div>
       </div>
     </div>
   </div>
@@ -1550,16 +1609,15 @@ function scrollAnims(){
   G.from('.stage',{clipPath:'inset(12% 8% 12% 8% round 28px)',ease:'none',scrollTrigger:{trigger:'.stage',start:'top 95%',end:'top 40%',scrub:true}});
   // gallery
   $$('.gal .ph').forEach(el=>{G.fromTo(el,{clipPath:'inset(22% 12% 22% 12% round 20px)'},{clipPath:'inset(0% 0% 0% 0% round 20px)',ease:'none',scrollTrigger:{trigger:el,start:'top 98%',end:'top 45%',scrub:true}});
-    G.fromTo($('.ph__in',el),{scale:1.35,yPercent:-6},{scale:1,yPercent:6,ease:'none',scrollTrigger:{trigger:el,start:'top bottom',end:'bottom top',scrub:true}})});
+    G.fromTo($('.ph__in',el),{scale:1.35,yPercent:-6},{scale:1.16,yPercent:6,ease:'none',scrollTrigger:{trigger:el,start:'top bottom',end:'bottom top',scrub:true}})});
   // coaches stagger depth
-  G.matchMedia().add('(min-width:761px)',()=>{G.from('.cc',{y:120,rotateX:-25,opacity:0,stagger:.12,duration:1.4,ease:'expo.out',transformPerspective:1200,scrollTrigger:{trigger:'.coaches',start:'top 85%'}});});
   // prices
   // camps
   // camps: шторка фона + параллакс, буквы собираются из разлёта, контур заливается
   G.fromTo('.camps__bg',{clipPath:'inset(14% 10% 14% 10% round 40px)'},{clipPath:'inset(0% 0% 0% 0% round 0px)',ease:'none',scrollTrigger:{trigger:'.camps',start:'top bottom',end:'top 15%',scrub:true}});
-  G.fromTo('.camps__bg .ph__in',{scale:1.35,yPercent:-8},{scale:1.05,yPercent:6,ease:'none',scrollTrigger:{trigger:'.camps',start:'top bottom',end:'bottom top',scrub:true}});
+  G.fromTo('.camps__bg .ph__in',{scale:1.35,yPercent:-8},{scale:1.2,yPercent:6,ease:'none',scrollTrigger:{trigger:'.camps',start:'top bottom',end:'bottom top',scrub:true}});
   {const l1=$('.camps__t .ci:not(.ci--o)');if(l1){const ch=splitChars(l1);G.from(ch,{x:()=>G.utils.random(-260,260),y:()=>G.utils.random(-200,160),rotate:()=>G.utils.random(-70,70),opacity:0,scale:.4,duration:1.6,ease:'expo.out',stagger:{each:.04,from:'random'},scrollTrigger:{trigger:'.camps__t',start:'top 85%'}})}}
-  G.fromTo('.camps__t .ci--o',{backgroundPosition:'100% 0'},{backgroundPosition:'0% 0',ease:'none',scrollTrigger:{trigger:'.camps__t',start:'top 70%',end:'bottom 25%',scrub:true}});
+  G.fromTo('.camps__t .ci--o',{backgroundPosition:'100% 0'},{backgroundPosition:'0% 0',ease:'none',scrollTrigger:{trigger:'.camps__t',start:'top 95%',end:'top 40%',scrub:.6}});
   G.to('.camps__t .l:first-child',{xPercent:-6,ease:'none',scrollTrigger:{trigger:'.camps',start:'top bottom',end:'bottom top',scrub:true}});
   G.to('.camps__t .l2',{xPercent:5,ease:'none',scrollTrigger:{trigger:'.camps',start:'top bottom',end:'bottom top',scrub:true}});
   G.to('#ringSvg',{rotate:540,ease:'none',scrollTrigger:{trigger:'.camps',start:'top bottom',end:'bottom top',scrub:true}});
@@ -1602,8 +1660,9 @@ function typeTargets(){
   els=els.filter(e=>!e.closest(TYPE_EXCL)&&e.textContent.trim().length>0&&!e.querySelector('h2,h3,h4,p,li,dd'));
   const set=new Set(els);return els.filter(e=>{let p=e.parentElement;while(p){if(set.has(p))return false;p=p.parentElement}return true});
 }
-let dirTW=null,H2I=0;const PENDING=[];
-function flushPending(){PENDING.forEach(o=>{if(o.isDone())return;const r=o.el.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>-innerHeight*3&&o.el.getClientRects().length)o.fire()})}
+let dirTW=null,H2I=0;const PENDING=[];const REVMAP=new WeakMap();const REVIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const f=REVMAP.get(e.target);REVIO.unobserve(e.target);f&&setTimeout(f,120)}}),{rootMargin:'0px 0px -8% 0px'});
+function flushPending(){PENDING.forEach(o=>{if(o.isDone())return;const r=o.el.getBoundingClientRect();if(r.top<innerHeight*.9&&r.bottom>-innerHeight*3&&o.el.getClientRects().length)o.fire()})}
+{let lt=0;addEventListener('scroll',()=>{const n=performance.now();if(n-lt<150)return;lt=n;requestAnimationFrame(flushPending)},{passive:true})}
 addEventListener('resize',()=>{clearTimeout(flushPending.t);flushPending.t=setTimeout(()=>{ST&&ST.refresh();flushPending()},350)});
 const SCR='ABCDEFGHJKLMNOPRSTUVXYZАБВГДЕЖЗИКЛМНОПРСТУФХЦ0123456789#/+*';
 function scramble(el){
@@ -1645,7 +1704,7 @@ function initTyping(els){
     let done=false;const fire=()=>{if(done)return;done=true;play()};
     const st=ST.create({trigger:trg,start:el.closest('footer')?'top bottom':'top 88%',once:true,onEnter:fire});
     if(inDir)ST.create({trigger:'.dir',start:'top 75%',once:true,onEnter:fire});
-    PENDING.push({el,fire,isDone:()=>done});
+    PENDING.push({el,fire,isDone:()=>done});REVIO.observe(el);REVMAP.set(el,fire);
   });
 }
 
@@ -1830,9 +1889,50 @@ function coachSlider(){const box=$('.coaches');if(!box)return;const cards=$$('.c
   $('.cp',ui).onclick=()=>to(cur-1);$('.cn',ui).onclick=()=>to(cur+1);
   box.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();}
 
+/* ================= TEAM block ================= */
+function teamBlock(){const root=$('#team');if(!root)return;
+  const rows=$$('.team__row',root),slides=$$('.team__slide',root),media=$('.team__media',root),big=$('.team__big',root),num=$('.team__num',root),capt=$('.team__capt',root);
+  const n=slides.length;let cur=0,busy=false;
+  const setBig=(txt,dir)=>{const all=$$('span',big);const old=all[all.length-1];
+    all.slice(0,-1).forEach(x=>{G&&G.killTweensOf(x);x.remove()});
+    const nw=document.createElement('span');nw.textContent=txt;big.appendChild(nw);
+    if(!G||RM){old&&old.remove();return}
+    if(old){G.killTweensOf(old);G.to(old,{yPercent:-dir*110,rotate:-dir*8,duration:.7,ease:'expo.inOut',onComplete:()=>old.remove()})}
+    G.fromTo(nw,{yPercent:dir*110,rotate:dir*8},{yPercent:0,rotate:0,duration:1,ease:'expo.out'})};
+  function go(i,from){i=(i+n)%n;if(i===cur)return restart();const dir=(i>cur)?1:-1;const prev=slides[cur],next=slides[i];
+    rows.forEach((r,k)=>{r.classList.toggle('on',k===i);r.setAttribute('aria-selected',k===i)});
+    slides.forEach(s=>s.classList.remove('was'));prev.classList.remove('on');prev.classList.add('was');next.classList.add('on');
+    num.textContent=String(i+1).padStart(2,'0')+' / '+String(n).padStart(2,'0');capt.textContent=next.dataset.cap;setBig(next.dataset.big,dir);
+    if(G&&!RM){const clipFrom=dir>0?'inset(0% 0% 0% 100%)':'inset(0% 100% 0% 0%)';
+      G.fromTo(next,{clipPath:clipFrom},{clipPath:'inset(0% 0% 0% 0%)',duration:1.15,ease:'expo.inOut',overwrite:true});
+      G.fromTo($('.ph__in',next),{scale:1.3,xPercent:dir*8},{scale:1,xPercent:0,duration:1.6,ease:'expo.out',overwrite:true});
+      G.fromTo($('.ph__in',prev),{xPercent:0,scale:1},{xPercent:-dir*12,scale:1.08,duration:1.15,ease:'expo.inOut',overwrite:true,onComplete:()=>G.set($('.ph__in',prev),{clearProps:'transform'})});
+      G.fromTo('.team__cap',{y:16,opacity:.0},{y:0,opacity:1,duration:.8,ease:'expo.out',delay:.25,overwrite:true})}
+    cur=i;restart()}
+  function restart(){rows.forEach(r=>{const p=$('.team__prog',r);p.style.animation='none';void p.offsetWidth;p.style.animation=''})}
+  rows.forEach((r,i)=>{r.addEventListener('click',()=>go(i));if(matchMedia('(hover:hover)').matches){let ht;r.addEventListener('mouseenter',()=>{clearTimeout(ht);ht=setTimeout(()=>go(i),140)});r.addEventListener('mouseleave',()=>clearTimeout(ht))}
+    $('.team__prog',r).addEventListener('animationend',()=>{if(r.classList.contains('on'))go(cur+1)})});
+  // swipe on photo
+  let sx=null,sy=0;media.addEventListener('pointerdown',e=>{sx=e.clientX;sy=e.clientY});
+  media.addEventListener('pointerup',e=>{if(sx===null)return;const dx=e.clientX-sx,dy=e.clientY-sy;sx=null;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)){media.dataset.swiped='1';go(cur+(dx<0?1:-1));setTimeout(()=>delete media.dataset.swiped,60)}});
+  media.addEventListener('click',e=>{if(media.dataset.swiped){e.stopPropagation();e.preventDefault()}},true);
+  media.addEventListener('dragstart',e=>e.preventDefault());
+  // pause progress off-screen / on hover over photo
+  root.classList.add('paused');
+  new IntersectionObserver(es=>root.classList.toggle('paused',!es[0].isIntersecting),{threshold:.35}).observe(media);
+  media.addEventListener('pointerenter',()=>root.classList.add('paused'));media.addEventListener('pointerleave',()=>root.classList.remove('paused'));
+  // entrance
+  if(G&&ST&&!RM){
+    G.fromTo(media,{clipPath:'inset(18% 12% 18% 12% round 40px)'},{clipPath:'inset(0% 0% 0% 0% round 30px)',ease:'none',scrollTrigger:{trigger:media,start:'top 95%',end:'top 35%',scrub:true}});
+    G.fromTo(slides.map(s=>$('.ph',s)),{yPercent:-6},{yPercent:6,ease:'none',scrollTrigger:{trigger:media,start:'top bottom',end:'bottom top',scrub:true}});
+    G.from(rows,{x:-70,opacity:0,duration:1.1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.team__list',start:'top 88%'}});
+    G.from(big,{yPercent:60,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:media,start:'top 70%'}});
+  }
+}
+
 /* ================= BOOT ================= */
 const l1=$('.hero__t .l1'),l2=$('.hero__t .l2');splitChars(l1);splitChars(l2);
-gallerySlider();coachSlider();pricesSlider();markLB();heroGL();courtGL();scrollAnims();bgFX();
+gallerySlider();teamBlock();pricesSlider();markLB();heroGL();courtGL();scrollAnims();bgFX();
 (function loader(){
   const n=$('#ldn'),b=$('#ldb');
   if(!G||RM){$('#loader').remove();intro();return}
