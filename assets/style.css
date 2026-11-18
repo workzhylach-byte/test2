@@ -119,7 +119,8 @@ ul{list-style:none}
 .nav .dd a:hover{background:var(--bg)}
 .nav .dd a:hover::after{opacity:.7;transform:translateX(0) rotate(45deg)}
 .logo{display:flex;align-items:center;gap:12px;justify-self:start}
-.logo img{width:36px;height:36px}
+.logo .lm{width:36px;height:36px;flex:none}
+.fx__brand .lm{width:40px;height:40px;flex:none;color:var(--ink)}
 .logo span{font-family:var(--ff-d);font-weight:700;font-size:21px;letter-spacing:.06em;text-transform:uppercase;line-height:.9;white-space:nowrap}
 .bar__r{display:flex;justify-content:flex-end;align-items:center;gap:10px}
 .lang{display:flex;font-family:var(--ff-m);font-size:12px;border:1px solid currentColor;border-radius:99px;padding:3px}
@@ -133,6 +134,10 @@ ul{list-style:none}
 .nav a.n{white-space:nowrap}
 .burger{width:46px;height:46px;border-radius:50%;border:1px solid currentColor;display:none;place-items:center}
 .burger{position:relative}
+.mph,.mrec{display:none!important}
+.mph{width:42px;height:42px;border-radius:50%;border:1px solid currentColor;place-items:center}
+.mph svg{width:18px;height:18px}
+@media (max-width:640px){.mph{display:grid!important}.bar__r .mrec{display:inline-flex!important;height:42px;padding:0 16px;font-size:14px}.burger{width:42px;height:42px}.bar__r{gap:6px!important}.logo span{display:none}}
 .burger i,.burger i::after{display:block;width:18px;height:1.5px;background:currentColor;transition:transform .45s var(--ease)}
 .burger i{position:relative;transform:translateY(-3px)}
 .burger i::after{content:'';position:absolute;left:0;top:6px}
@@ -511,6 +516,18 @@ ul{list-style:none}
 .fx__clubs a{display:flex;flex-direction:column;padding:8px 14px;border:1px solid var(--line);border-radius:10px;font-size:14px;font-weight:500;line-height:1.25}
 .fx__clubs a small{font-size:11px;color:var(--mute);font-weight:400}
 .fx__clubs a.on{border-color:var(--ink);background:var(--bg)}
+@media (max-width:640px){
+ .fx__clubs{display:block;width:100%}
+ .fx__clubs .mono{display:block;margin:0 0 6px}
+ .fx__clubs a{position:relative;display:grid;grid-template-columns:14px 1fr 16px;column-gap:12px;align-items:center;border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0;background:none!important;padding:14px 0;font-size:16px}
+ .fx__clubs a::before{content:'';grid-row:1/span 2;width:9px;height:9px;border-radius:50%;border:1.5px solid var(--mute-l)}
+ .fx__clubs a.on::before{background:var(--ball);border-color:var(--ball);box-shadow:0 0 0 4px rgba(220,242,58,.3)}
+ .fx__clubs a::after{content:'';grid-column:3;grid-row:1/span 2;width:7px;height:7px;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;transform:rotate(45deg);opacity:.5;justify-self:center}
+ .fx__clubs a.on::after{content:'Вы здесь';width:auto;height:auto;border:0;transform:none;opacity:1;font-family:var(--ff-m);font-size:9px;text-transform:uppercase;letter-spacing:.04em;background:var(--ball);padding:3px 6px;border-radius:3px;grid-column:3;justify-self:end;white-space:nowrap}
+ .fx__clubs a.on{grid-template-columns:14px 1fr auto}
+ .fx__clubs a small{grid-column:2;font-size:12px;margin-top:2px}
+ .fx__clubs a:last-child{border-bottom:0!important}
+}
 .fx__soc{display:flex;gap:8px;flex-wrap:wrap}
 .fx__soc a{position:relative;width:48px;height:48px;border-radius:50%;background:var(--bg);display:grid;place-items:center;transition:background .3s,color .3s,transform .4s var(--ease)}
 .fx__soc a svg{width:20px;height:20px}
