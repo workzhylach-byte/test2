@@ -5,10 +5,14 @@ const G=window.gsap,ST=window.ScrollTrigger,FL=window.Flip,RM=matchMedia('(prefe
 const IM=window.IMG||{};
 const PAGE=document.body.dataset.page||'home',isHome=PAGE==='home';
 /* готовые внутренние страницы: data-page -> файл */
-const PAGES={coaches:'trenery.html',team:'komanda.html','programs-kids':'programmy-detyam.html','programs-adults':'programmy-vzroslym.html'};
-$$('a[data-page]').forEach(a=>{const u=PAGES[a.dataset.page];if(u){a.setAttribute('href',u);delete a.dataset.f}});
+const PAGES={coaches:'trenery.html',team:'komanda.html','programs-kids':'programmy-detyam.html','programs-adults':'programmy-vzroslym.html',camps:'kempy.html','camp-summer':'kemp-viktory-summer-camp.html',corporate:'korporativy.html',birthdays:'dni-rozhdeniya.html',
+ prices:'ceny.html','prices#cards':'ceny.html#cards',about:'o-klube.html','about-tour':'o-klube.html#tour',cafe:'kafe.html','tournaments-kids':'detskie-turniry.html','tournaments-adults':'vzroslye-turniry.html','tournament-open':'turnir-viktory-open.html',
+ news:'novosti.html','news-events':'novosti.html?f=event','news-news':'novosti.html?f=news','news-articles':'novosti.html?f=article','news-open':'novost-otkrytie.html',contacts:'kontakty.html',schedule:'raspisanie.html',
+ 'home-programs':isHome?'#programs':'index.html#programs',events:'kempy.html','article-racket':'statya-kak-vybrat-raketku.html',policy:'politika.html',consent:'soglasie.html',rules:'pravila.html',offer:'oferta.html',requisites:'rekvizity.html',home:'index.html'};
+const mapPages=(r=document)=>$$('a[data-page]',r).forEach(a=>{const u=PAGES[a.dataset.page];if(u){a.setAttribute('href',u);delete a.dataset.f}});mapPages();
 if(!isHome)$$('a[href^="#"]').forEach(a=>{const h=a.getAttribute('href');if(h.length>1&&!document.querySelector(h))a.setAttribute('href','index.html'+(a.dataset.f?'?f='+a.dataset.f:'')+h)});
-$$('.nav a.n').forEach(a=>{if(a.dataset.page===PAGE||(PAGE.startsWith('programs')&&a.getAttribute('href').endsWith('#programs')))a.classList.add('is-cur')});
+{const GR=[/^programs/,/^coaches$/,/^prices$/,/^(about|team|cafe)$/,/^(camp|corporate|birthdays|tournament)/,/^news/,/^contacts$/];
+ $$('.nav a.n').forEach((a,k)=>{if(GR[k]&&GR[k].test(PAGE))a.classList.add('is-cur')})}
 /* фильтр направлений из ссылки index.html#programs?f=kids */
 const hf=new URLSearchParams(location.search).get('f');
 $$('img[data-img]').forEach(i=>{const k=i.dataset.img;i.src=IM[k]||('img/'+k+(k==='logo_mark'?'.svg':'.jpg'));i.decoding='async'});
@@ -50,15 +54,15 @@ if($('#heroS')){const figs=$$('#heroS figure'),tabs=$$('#heroT button'),lab=$('#
 
 /* modal */
 const md=$('#md'),mdB=$('#mdB');
-function openMd(type){const t=$('#t-'+type);if(!t)return;md.classList.remove('wide');mdB.innerHTML='';mdB.appendChild(t.content.cloneNode(true));
+function openMd(type){const t=$('#t-'+type);if(!t)return;md.classList.remove('wide');mdB.innerHTML='';mdB.appendChild(t.content.cloneNode(true));mapPages(mdB);
   const d=$('.yc__d',mdB);if(d){const wd=['вс','пн','вт','ср','чт','пт','сб'],n=new Date();for(let k=0;k<6;k++){const x=new Date(n);x.setDate(n.getDate()+k);d.insertAdjacentHTML('beforeend',`<span class="${k?'':'on'}">${wd[x.getDay()]}<b>${x.getDate()}</b></span>`)}}
   bindReq(mdB);const go=$('[data-go]',mdB);go&&go.addEventListener('click',()=>{toast('Здесь откроется виджет YCLIENTS');closeMd()});
-  const f=$('form',mdB);f&&bindForm(f,()=>okMd(f.dataset.okh||'Спасибо! Ваша заявка принята.',f.dataset.okp||'Наш менеджер свяжется с вами в течение 2 часов для подтверждения.'));
+  campForm(mdB);const f=$('form',mdB);f&&bindForm(f,()=>f.dataset.thanks?(location.href='spasibo.html?t='+f.dataset.thanks):okMd(f.dataset.okh||'Спасибо! Ваша заявка принята.',f.dataset.okp||'Наш менеджер свяжется с вами в течение 2 часов для подтверждения.'));
   md.classList.add('on');md.setAttribute('aria-hidden','false');lenis&&lenis.stop()}
 function okMd(h,p){mdB.innerHTML=`<div class="ok"><div class="ball"></div><h3>${h}</h3><p class="desc">${p}</p><button class="bt" data-x>Закрыть</button></div>`;G&&G.from('.ok .ball',{scale:0,y:-80,duration:1.1,ease:'bounce.out'})}
 function closeMd(){md.classList.remove('on');md.setAttribute('aria-hidden','true');!mmOpen&&lenis&&lenis.start()}
 function bindReq(root){const r=$$('[data-req]',root),s=$('[type=submit],[data-go]',root);const c=()=>{if(s)s.disabled=!r.every(x=>x.checked)};r.forEach(x=>x.addEventListener('change',c))}
-function bindForm(f,ok){f.addEventListener('submit',e=>{e.preventDefault();const bad=$$('input[required]',f).find(i=>!i.value.trim());$$('input',f).forEach(i=>i.classList.remove('err'));if(bad){bad.classList.add('err');bad.focus();return}ok()})}
+function bindForm(f,ok){f.addEventListener('submit',e=>{e.preventDefault();const bad=$$('input[required],select[required]',f).find(i=>!(i.value||'').trim()||(i.type==='email'&&!/^\S+@\S+\.\S+$/.test(i.value)));$$('input,select',f).forEach(i=>i.classList.remove('err'));if(bad){bad.classList.add('err');bad.focus();return}ok()})}
 document.addEventListener('click',e=>{const o=e.target.closest('[data-modal]');if(o){e.preventDefault();closeMM();openMd(o.dataset.modal)}if(e.target.closest('[data-x]'))closeMd()});
 addEventListener('keydown',e=>{if(e.key==='Escape'){closeMd();closeLb();closeMM()}});
 if($('#askF')){const f=$('#askF');bindReq(f);bindForm(f,()=>{f.innerHTML='<h3>Спасибо за обращение!</h3><p>Мы ответим вам в течение 2 часов в рабочее время.</p>'})}
@@ -104,10 +108,21 @@ function closeLb(){window.closeLb&&window.closeLb()}
 
 $('#fxUp').addEventListener('click',()=>lenis?lenis.scrollTo(0):scrollTo({top:0,behavior:'smooth'}));
 if(isHome&&hf){setFilter(hf);setTimeout(()=>goTo('#programs'),300)}
+/* заявка на кэмп: взрослый кэмп — без полей родителя */
+function campForm(root,v){const s=$('[data-camp-sel]',root);if(!s)return;if(v)s.value=v;const u=()=>{const ad=s.value==='winter';$$('[data-kid-only]',root).forEach(l=>{l.hidden=ad;$$('input',l).forEach(i=>i.required=!ad)});$$('[data-l-kid]',root).forEach(e=>e.textContent=ad?e.dataset.lAdult:e.dataset.lKid)};s.addEventListener('change',u);u()}
+$$('form[data-camp-form]').forEach(f=>campForm(f));
+document.addEventListener('click',e=>{const o=e.target.closest('[data-modal][data-camp]');if(!o)return;setTimeout(()=>campForm(mdB,o.dataset.camp),0)});
+/* форматы корпоратива: вкладки */
+if($('.fmt__t')){const tb=$$('.fmt__t button'),ps=$$('.fp');tb.forEach((b,k)=>b.addEventListener('click',()=>{tb.forEach((x,j)=>{x.classList.toggle('on',j===k);x.setAttribute('aria-selected',j===k)});ps.forEach((p,j)=>p.classList.toggle('on',j===k));const f=$('#corpFmt');if(f){f.selectedIndex=k+1;f.dispatchEvent(new Event('change'))}if(innerWidth<=1000)b.parentElement.scrollTo({left:b.offsetLeft-20,behavior:'smooth'})}))}
+/* корпоратив: кнопки форматов и вместимость */
+if($('#corpFmt')){const f=$('#corpFmt'),cap=$('#corpCap');const u=()=>{const o=f.options[f.selectedIndex];if(cap)cap.textContent=o&&o.dataset.cap?(f.dataset.capl||'Заявленная вместимость формата: ')+o.dataset.cap:(cap&&cap.dataset.def)||'Выберите формат, чтобы посмотреть заявленную вместимость.'};f.addEventListener('change',u);
+ $$('[data-fmt]').forEach(b=>b.addEventListener('click',()=>{f.selectedIndex=+b.dataset.fmt+1;u();goTo('#apply')}))}
+/* кэмпы: предстоящие / архив */
+if($('.ctab')){const bs=$$('.ctab button');bs.forEach(b=>b.addEventListener('click',()=>{bs.forEach(x=>{x.classList.toggle('on',x===b);x.setAttribute('aria-selected',x===b)});$$('[data-cp]').forEach(p=>p.hidden=p.dataset.cp!==b.dataset.ct);ST&&ST.refresh()}))}
 /* направление в заявке в группу */
 document.addEventListener('click',e=>{const o=e.target.closest('[data-modal][data-dir]');if(!o)return;setTimeout(()=>{const s=$('select[name=dir]',mdB);if(s)s.value=o.dataset.dir},0)});
 /* формы прямо на странице */
-$$('form[data-inline]').forEach(f=>{bindReq(f);bindForm(f,()=>{f.innerHTML='<div class="ok"><div class="ball"></div><h3>'+f.dataset.okh+'</h3><p class="desc">'+f.dataset.okp+'</p></div>';G&&G.from($('.ok .ball',f),{scale:0,y:-60,duration:1,ease:'bounce.out'})})});
+$$('form[data-inline]').forEach(f=>{bindReq(f);bindForm(f,()=>{if(f.dataset.thanks){location.href='spasibo.html?t='+f.dataset.thanks;return}f.innerHTML='<div class="ok"><div class="ball"></div><h3>'+f.dataset.okh+'</h3><p class="desc">'+f.dataset.okp+'</p></div>';G&&G.from($('.ok .ball',f),{scale:0,y:-60,duration:1,ease:'bounce.out'})})});
 /* раскрывающиеся блоки: плавно, без скачка страницы */
 let rT;const stRefresh=()=>{clearTimeout(rT);rT=setTimeout(()=>{ST&&ST.refresh();lenis&&lenis.resize&&lenis.resize()},60)};
 $$('.pd__ds').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();const d=b.closest('.pd__d'),o=!d.classList.contains('open');d.classList.toggle('open',o);b.setAttribute('aria-expanded',o);const c=$('.pd__dc',d);c.addEventListener('transitionend',stRefresh,{once:true})}));
@@ -125,8 +140,100 @@ if($('#cgr')){const cs=$$('#cgr .cc'),cb=$$('#cflt button');let first=true;
     const swap=()=>{cs.forEach(c=>c.classList.toggle('hid',!ok(c)));ST&&ST.refresh();
       const v=cs.filter(c=>!c.classList.contains('hid'));if(G&&!RM)G.fromTo(v,{opacity:0,y:24},{opacity:1,y:0,duration:.55,ease:'expo.out',stagger:.06,clearProps:'opacity,transform'})};
     if(G&&!RM){G.killTweensOf(cs);G.to(cs.filter(c=>!c.classList.contains('hid')),{opacity:0,y:-10,duration:.2,ease:'power1.in',onComplete:swap})}else swap()}))}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== v3: остальные страницы ===== */
+/* вопросы-ответы: плавное раскрытие */
+$$('.faq__q').forEach(q=>q.addEventListener('click',()=>{const i=q.closest('.faq__i'),o=!i.classList.contains('open');i.classList.toggle('open',o);q.setAttribute('aria-expanded',o);$('.faq__a',i).addEventListener('transitionend',stRefresh,{once:true})}));
+/* фильтры карточек: новости, турниры */
+$$('[data-flt]').forEach(box=>{const bs=$$('button[data-f]',box),items=$$(box.dataset.flt),cnt=$(box.dataset.cnt||'#none');
+  const set=f=>{bs.forEach(b=>{const on=b.dataset.f===f;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});let n=0;items.forEach(c=>{const ok=f==='all'||c.dataset.t.split(' ').includes(f);c.classList.toggle('hid',!ok);if(ok)n++});if(cnt)cnt.textContent=n;
+    const v=items.filter(c=>!c.classList.contains('hid'));if(G&&!RM)G.fromTo(v,{opacity:0,y:24},{opacity:1,y:0,duration:.55,ease:'expo.out',stagger:.06,clearProps:'opacity,transform'});stRefresh()};
+  bs.forEach(b=>b.addEventListener('click',()=>set(b.dataset.f)));
+  const q=new URLSearchParams(location.search).get('f');if(q&&bs.some(b=>b.dataset.f===q))set(q)});
+/* карта: загружается только по клику */
+$$('[data-map]').forEach(b=>b.addEventListener('click',()=>{const m=b.closest('.map2');if(!m||$('iframe',m))return;const f=document.createElement('iframe');f.src='https://yandex.ru/map-widget/v1/?ll=37.392499%2C55.834896&z=16&pt=37.392499,55.834896,pm2gnm';f.title='Клуб на карте';f.loading='lazy';f.allowFullscreen=true;m.appendChild(f)}));
+/* меню кафе: подсветка раздела */
+if($('.mnu__nav')){const ls=$$('.mnu__nav a'),ss=ls.map(a=>$(a.getAttribute('href')));const on=()=>{let k=0;ss.forEach((s,i)=>{if(s&&s.getBoundingClientRect().top<innerHeight*.45)k=i});ls.forEach((a,i)=>a.classList.toggle('on',i===k));const a=ls[k],n=a.parentElement;if(n.scrollWidth>n.clientWidth)n.scrollTo({left:a.offsetLeft-n.clientWidth/2+a.clientWidth/2,behavior:'smooth'})};addEventListener('scroll',on,{passive:true});on()}
+/* документы: текущий пункт */
+$$('.doc__nav a').forEach(a=>{if(a.dataset.page===PAGE)a.classList.add('on')});
+/* страница «Спасибо» */
+if(PAGE==='thanks'){const T={
+  camp:['Спасибо!','Ваша заявка на кэмп принята','Менеджер свяжется с вами в течение 24 часов для подтверждения бронирования','Вернуться к кэмпам','kempy.html'],
+  corp:['Спасибо!','Мы получили заявку на корпоратив','Менеджер свяжется с вами в течение 4 часов для обсуждения деталей.','Вернуться назад','korporativy.html'],
+  bday:['Спасибо!','Мы получили заявку на день рождения','Менеджер свяжется с вами в течение 4 часов для обсуждения деталей.','Вернуться назад','dni-rozhdeniya.html'],
+  contact:['Спасибо','за обращение!','Мы ответим вам в течение 2 часов в рабочее время','Вернуться назад','kontakty.html']};
+ const t=T[new URLSearchParams(location.search).get('t')]||T.contact;$('#thxH').innerHTML='<span>'+t[0]+'</span> <span class="o">'+t[1]+'</span>';$('#thxP').textContent=t[2];const b=$('#thxB');b.firstChild.textContent=t[3]+' ';b.href=t[4];
+ if(document.referrer&&new URL(document.referrer).origin===location.origin&&!/spasibo/.test(document.referrer))b.href=document.referrer}
+/* фото-тур по клубу: просмотр */
+if($('.tour__i')){const lb=$('#lb'),li=$('img',lb),lc=$('.lb__c',lb),it=$$('.tour__i');let k=0;
+ const show=n=>{k=(n+it.length)%it.length;li.src=$('img',it[k]).src;lc.textContent=String(k+1).padStart(2,'0')+' / '+String(it.length).padStart(2,'0')+' · '+$('.tour__t b',it[k]).textContent;G&&G.fromTo(li,{opacity:0,scale:.97},{opacity:1,scale:1,duration:.5,ease:'expo.out'})};
+ const close=()=>{lb.classList.remove('on');lenis&&lenis.start()};window.closeLb=close;
+ it.forEach((t,n)=>{t.setAttribute('tabindex','0');t.setAttribute('role','button');const o=()=>{show(n);lb.classList.add('on');lenis&&lenis.stop()};t.addEventListener('click',o);t.addEventListener('keydown',e=>{if(e.key==='Enter')o()})});
+ $('.lb__x',lb).onclick=close;$('.lb__p',lb).onclick=()=>show(k-1);$('.lb__n',lb).onclick=()=>show(k+1);lb.addEventListener('click',e=>{if(e.target===lb)close()});
+ addEventListener('keydown',e=>{if(!lb.classList.contains('on'))return;if(e.key==='ArrowRight')show(k+1);if(e.key==='ArrowLeft')show(k-1)})}
+/* анимации новых страниц */
+if(G&&ST&&!RM){
+ if($('.phs')){G.from('.phs .bc,.phs .kicker,.phs .lead,.phs__m,.phs .ph__ctas',{y:26,opacity:0,duration:1.1,ease:'expo.out',stagger:.08,delay:.45});
+  $$('.phs__court rect,.phs__court line').forEach((l,i)=>{const n=l.getTotalLength?l.getTotalLength():800;G.fromTo(l,{strokeDasharray:n,strokeDashoffset:n},{strokeDashoffset:0,duration:2,ease:'power2.inOut',delay:.3+i*.05,onComplete:()=>{l.style.strokeDasharray=l.classList.contains('nt')?'3 5':'none'}})})}
+ $$('[data-rv]').forEach(g=>G.from(g.children,{y:50,opacity:0,duration:1.05,ease:'expo.out',stagger:.08,scrollTrigger:{trigger:g,start:'top 86%'}}));
+ $$('[data-clip]').forEach(m=>G.fromTo(m,{clipPath:'inset(100% 0 0 0)'},{clipPath:'inset(0% 0 0 0)',duration:1.4,ease:'expo.inOut',scrollTrigger:{trigger:m,start:'top 88%'}}));
+ $$('[data-par] img').forEach(im=>G.fromTo(im,{yPercent:-5,scale:1.1},{yPercent:5,scale:1.1,ease:'none',scrollTrigger:{trigger:im.parentElement,start:'top bottom',end:'bottom top',scrub:true}}));
+ $$('.ptb__r').forEach(r=>G.from(r,{x:-40,opacity:0,duration:.9,ease:'expo.out',scrollTrigger:{trigger:r,start:'top 92%'}}));
+ $$('.cat__c svg').forEach(s=>{$$('rect.o,line',s).forEach(l=>{const n=l.getTotalLength?l.getTotalLength():400;G.fromTo(l,{strokeDasharray:n,strokeDashoffset:n},{strokeDashoffset:0,duration:1.6,ease:'power2.inOut',scrollTrigger:{trigger:s,start:'top 88%'},onComplete:()=>l.style.strokeDasharray='none'})})});
+ if(!PAGE.startsWith('camp'))$$('.bp').forEach(p=>G.from(p,{y:80,rotate:1.5,opacity:0,duration:1.3,ease:'expo.out',scrollTrigger:{trigger:p,start:'top 88%'}}));
+ if($('.thx__ball')){G.from('.thx__ball',{y:-260,duration:1.5,ease:'bounce.out',delay:.2});G.from('.thx__sh',{scaleX:.3,opacity:0,duration:1.5,ease:'bounce.out',delay:.2});G.from('.thx h1>span,.thx p,.thx .btns',{y:30,opacity:0,duration:1.1,ease:'expo.out',stagger:.1,delay:.6})}
+ $$('[data-cnt-up]').forEach(b=>{const n=+b.dataset.cntUp,o={v:0},sfx=b.dataset.sfx||'';ST.create({trigger:b,start:'top 90%',once:true,onEnter:()=>G.to(o,{v:n,duration:1.8,ease:'power3.out',onUpdate:()=>b.firstChild.textContent=Math.round(o.v)+sfx})})});
+}
+/* расписание: даты в превью виджета и галочка правил */
+if($('#ycD')){const d=$('#ycD'),wd=['вс','пн','вт','ср','чт','пт','сб'],n=new Date();for(let k=0;k<7;k++){const x=new Date(n);x.setDate(n.getDate()+k);d.insertAdjacentHTML('beforeend',`<span class="${k?'':'on'}">${wd[x.getDay()]}<b>${x.getDate()}</b></span>`)}bindReq($('.ycw__w'))}
+/* главная: кэмпы — фото раскрывается из окна на весь экран, текст выезжает */
+if($('.cpx')&&G&&ST&&!RM){const mm=G.matchMedia();
+ mm.add('(min-width:901px)',()=>{const tl=G.timeline({scrollTrigger:{trigger:'.cpx',start:'top top',end:'bottom bottom',scrub:.8}});
+  tl.fromTo('.cpx__win',{clipPath:'inset(14% 22% 14% 22% round 28px)'},{clipPath:'inset(0% 0% 0% 0% round 0px)',ease:'power2.inOut',duration:1},0)
+    .fromTo('.cpx__bg',{scale:1.35,yPercent:-3},{scale:1.02,yPercent:3,ease:'none',duration:1.6},0)
+    .fromTo('.cpx__sh',{opacity:.15},{opacity:1,ease:'none',duration:.8},.3)
+    .fromTo('.cpx__path',{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',ease:'none',duration:1.2},.4)
+    .fromTo('.cpx__c .kicker',{y:30,opacity:0},{y:0,opacity:1,duration:.3},.7)
+    .fromTo('.cpx__t .ln>span',{yPercent:110},{yPercent:0,duration:.45,stagger:.12,ease:'power3.out'},.75)
+    .fromTo('.cpx__r>*',{y:50,opacity:0},{y:0,opacity:1,duration:.4,stagger:.1,ease:'power3.out'},1)
+    .fromTo('.cpx__tk',{yPercent:100},{yPercent:0,duration:.4,ease:'power3.out'},1.1)
+    .to({},{duration:.4});
+  return()=>tl.kill()});
+ mm.add('(max-width:900px)',()=>{const a=G.fromTo('.cpx__bg',{scale:1.25},{scale:1.02,ease:'none',scrollTrigger:{trigger:'.cpx',start:'top bottom',end:'bottom top',scrub:true}});
+  const b=G.timeline({scrollTrigger:{trigger:'.cpx__c',start:'top 75%'}});b.from('.cpx__c .kicker',{y:24,opacity:0,duration:.8,ease:'expo.out'}).from('.cpx__t .ln>span',{yPercent:110,duration:1.1,ease:'expo.out',stagger:.1},'-=.5').from('.cpx__r>*',{y:30,opacity:0,duration:.9,ease:'expo.out',stagger:.08},'-=.7');
+  return()=>{a.kill();b.kill()}})}
+/* программы: вступление — подсветка и лестница уровней */
+if($('.pin__t')){const t=$('.pin__t');if(G&&ST&&!RM){ST.create({trigger:t,start:'top 80%',once:true,onEnter:()=>t.classList.add('in')});
+ G.from('.pin__s>*',{y:40,opacity:0,duration:1.1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.pin',start:'top 80%'}});
+ G.from('.pin__lad',{y:60,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.pin__lad',start:'top 85%'}});
+ G.from('.pin__bars div',{scaleY:0,duration:1.2,ease:'expo.out',stagger:.12,delay:.2,scrollTrigger:{trigger:'.pin__lad',start:'top 85%'}});
+ G.from('.pin__bars b,.pin__bars small',{y:20,opacity:0,duration:.8,ease:'expo.out',stagger:.06,delay:.6,scrollTrigger:{trigger:'.pin__lad',start:'top 85%'}})}else t.classList.add('in')}
+/* клубные карты: лёгкий наклон за курсором */
+$$('[data-tilt]').forEach(c=>{if(!matchMedia('(hover:hover)').matches)return;c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.setProperty('--ry',(x*14)+'deg');c.style.setProperty('--rx',(-y*12)+'deg')});c.addEventListener('pointerleave',()=>{c.style.setProperty('--ry','0deg');c.style.setProperty('--rx','0deg')})});
+
+/* ===== /v3 ===== */
 /* ===== scroll animations ===== */
 if(!G||!ST||RM){return}
+/* reveal-анимации: после проигрыша убираем инлайн-стили, чтобы блоки не «застревали» со смещением */
+{const _f=G.from.bind(G);G.from=(t,v)=>{if(v&&!(v.scrollTrigger&&v.scrollTrigger.scrub)&&!v.clearProps)v.clearProps='transform,opacity,translate,rotate,scale';return _f(t,v)}}
 // heading line reveals
 $$('.h2').forEach(h=>G.from($$('.ln>span',h),{yPercent:108,duration:1.2,ease:'expo.out',stagger:.09,scrollTrigger:{trigger:h,start:'top 88%'}}));
 G.from('.top',{yPercent:-100,duration:1,ease:'expo.out',delay:.3,clearProps:'transform'});
@@ -137,14 +244,14 @@ G.from('.hero__g>*',{y:30,opacity:0,duration:1.1,ease:'expo.out',stagger:.1,dela
 G.to('.hero__s',{yPercent:18,scale:1.05,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
 G.to('.hero__c',{yPercent:-12,opacity:.2,ease:'none',scrollTrigger:{trigger:'.hero',start:'center top',end:'bottom top',scrub:true}});
 // statement word scrub
-{const el=$('#stT');const walk=n=>{[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(w=>{if(!w)return;if(/^\s+$/.test(w))f.appendChild(document.createTextNode(w));else{const s=document.createElement('span');s.className='w';s.textContent=w;f.appendChild(s)}});c.replaceWith(f)}else if(c.nodeType===1&&!c.classList.contains('pic'))walk(c)})};walk(el);
+if($('#stT')){const el=$('#stT');const walk=n=>{[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(w=>{if(!w)return;if(/^\s+$/.test(w))f.appendChild(document.createTextNode(w));else{const s=document.createElement('span');s.className='w';s.textContent=w;f.appendChild(s)}});c.replaceWith(f)}else if(c.nodeType===1&&!c.classList.contains('pic'))walk(c)})};walk(el);
  const ws=$$('.w,.pic',el);G.set($$('.w',el),{opacity:.14});G.set($$('.pic',el),{opacity:.14,scale:.6});
  G.to(ws,{opacity:1,scale:1,stagger:.08,ease:'none',scrollTrigger:{trigger:el,start:'top 80%',end:'bottom 45%',scrub:true}})}
 // facts counters
 $$('[data-c]').forEach(b=>{const n=+b.dataset.c;const o={v:0};b.textContent='0';ST.create({trigger:b,start:'top 92%',once:true,onEnter:()=>G.to(o,{v:n,duration:1.8,ease:'power3.out',onUpdate:()=>b.textContent=Math.round(o.v)})})});
 // program cards: rise with mask
 G.from('#pgr .pc',{y:80,opacity:0,duration:1.1,ease:'expo.out',stagger:{each:.08,grid:'auto',from:'start'},scrollTrigger:{trigger:'#pgr',start:'top 85%'}});
-$$('#pgr .pc__m img').forEach(i=>G.fromTo(i,{scale:1.25},{scale:1,ease:'none',scrollTrigger:{trigger:i,start:'top bottom',end:'bottom 40%',scrub:true}}));
+
 G.fromTo('.pc__bg',{yPercent:-5},{yPercent:5,ease:'none',scrollTrigger:{trigger:'.pc--cta',start:'top bottom',end:'bottom top',scrub:true}});
 $$('.pc__court rect,.pc__court line').forEach(l=>{const len=l.getTotalLength?l.getTotalLength():600;G.fromTo(l,{strokeDasharray:len,strokeDashoffset:len},{strokeDashoffset:0,duration:1.8,ease:'power2.inOut',scrollTrigger:{trigger:'.pc--cta',start:'top 80%'},onComplete:()=>{if(l.classList.contains('nt'))l.style.strokeDasharray='3 4'}})});
 // court plan draw on enter
@@ -161,8 +268,6 @@ $$('.cr__m').forEach((m,k)=>G.fromTo(m,{clipPath:'inset(100% 0 0 0)'},{clipPath:
 G.from('.rw',{x:-60,opacity:0,duration:1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.rows',start:'top 85%'}});
 G.from('.fv',{y:60,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.fv',start:'top 90%'}});
 // camps parallax + tickets
-G.fromTo('.cp__img img',{yPercent:-6},{yPercent:6,ease:'none',scrollTrigger:{trigger:'.cp__img',start:'top bottom',end:'bottom top',scrub:true}});
-G.fromTo('.cp__img',{clipPath:'inset(0 0 100% 0)'},{clipPath:'inset(0 0 0% 0)',duration:1.4,ease:'expo.inOut',scrollTrigger:{trigger:'.cp__img',start:'top 85%'}});
 G.from('.tk',{x:120,rotate:4,opacity:0,duration:1.3,ease:'expo.out',stagger:.15,scrollTrigger:{trigger:'.tix',start:'top 85%'}});
 // kitchen
 G.fromTo('.kt__img',{clipPath:'inset(12% 12% 12% 12%)'},{clipPath:'inset(0% 0% 0% 0%)',ease:'none',scrollTrigger:{trigger:'.kt__img',start:'top 90%',end:'top 35%',scrub:true}});
@@ -202,6 +307,29 @@ if(!isHome){
    G.from($('.pv__c',v),{y:80,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:v,start:'top 65%'}})});
  G.from('.gs__s li',{x:50,opacity:0,duration:1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.gs__s',start:'top 85%'}});
 }
+
+// camps pages
+if(PAGE==='corporate'||PAGE==='birthdays'){G.from('.fmt__t button',{x:-40,opacity:0,duration:1,ease:'expo.out',stagger:.08,scrollTrigger:{trigger:'.fmt__g',start:'top 80%'}});G.from('.fmt__p',{y:60,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.fmt__g',start:'top 80%'}});G.from('.prc__v',{yPercent:40,opacity:0,duration:1.3,ease:'expo.out',scrollTrigger:{trigger:'.prc',start:'top 75%'}});G.from('.prc__c li',{scale:.7,opacity:0,duration:.6,ease:'back.out(2)',stagger:.04,scrollTrigger:{trigger:'.prc__g',start:'top 85%'}});G.from('.arc__stamp',{scale:2.2,rotate:-20,opacity:0,duration:.8,ease:'back.out(1.6)',scrollTrigger:{trigger:'.arc__e',start:'top 80%'}})}
+if(PAGE.startsWith('camp')){
+ G.from('.gl__l li',{y:60,opacity:0,duration:1.1,ease:'expo.out',stagger:.09,scrollTrigger:{trigger:'.gl__l',start:'top 85%'}});
+ if($('.brd__b')){const CH='АБВГДЕЖЗИКЛМНОПРСТУФХЦЭЮЯ0123456789';$$('[data-flap]').forEach((b,k)=>{const w=b.textContent.trim();b.setAttribute('aria-label',w);b.innerHTML=[...w].map(c=>'<i aria-hidden="true">'+c+'</i>').join('');
+   const cs=$$('i',b);ST.create({trigger:b,start:'top 92%',once:true,onEnter:()=>{cs.forEach((c,j)=>{let n=0;const max=6+j*2+k;const t=setInterval(()=>{if(++n>=max){c.textContent=w[j];clearInterval(t)}else c.textContent=CH[Math.random()*CH.length|0]},45)})}})});
+  G.from('.brd__r',{x:-30,opacity:0,duration:.9,ease:'expo.out',stagger:.07,scrollTrigger:{trigger:'.brd__b',start:'top 85%'}})}
+ $$('.bp').forEach(p=>{G.from(p,{y:80,rotate:1.5,opacity:0,duration:1.3,ease:'expo.out',scrollTrigger:{trigger:p,start:'top 88%'}});G.from($('.bp__s b',p),{yPercent:60,opacity:0,duration:1.2,ease:'expo.out',delay:.3,scrollTrigger:{trigger:p,start:'top 80%'}})});
+ G.from('.inc__g li',{y:60,opacity:0,duration:1.1,ease:'expo.out',stagger:.08,scrollTrigger:{trigger:'.inc__g',start:'top 88%'}});
+ if($('.arc__stamp'))G.from('.arc__stamp',{scale:2.2,rotate:-20,opacity:0,duration:.8,ease:'back.out(1.6)',scrollTrigger:{trigger:'.arc__e',start:'top 80%'}});
+ if($('.pass'))G.from('.pass div',{y:30,opacity:0,duration:1,ease:'expo.out',stagger:.06,delay:.9});
+ if($('.day')){const d=$('.day');G.fromTo(d,{'--p':0},{'--p':1,ease:'none',scrollTrigger:{trigger:d,start:'top 70%',end:'bottom 60%',scrub:true}});G.from('.day li',{x:40,opacity:0,duration:1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:d,start:'top 80%'}});G.from('.xtr li',{y:50,rotate:3,opacity:0,duration:1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.xtr',start:'top 88%'}})}
+ if($('.sty')){G.fromTo('.sty__bg img',{yPercent:-6},{yPercent:6,ease:'none',scrollTrigger:{trigger:'.sty',start:'top bottom',end:'bottom top',scrub:true}});G.from('.sty__c',{y:70,opacity:0,duration:1.2,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.sty__g',start:'top 85%'}})}
+ if($('.prn')){G.from('.prn__t',{yPercent:30,opacity:0,duration:1.3,ease:'expo.out',scrollTrigger:{trigger:'.prn',start:'top 75%'}});G.from('.prn__l li',{x:60,opacity:0,duration:1.1,ease:'expo.out',stagger:.12,scrollTrigger:{trigger:'.prn',start:'top 75%'}})}
+ if($('.prc')){G.from('.prc__v',{yPercent:40,opacity:0,duration:1.3,ease:'expo.out',scrollTrigger:{trigger:'.prc',start:'top 75%'}});G.from('.prc__c li',{scale:.7,opacity:0,duration:.6,ease:'back.out(2)',stagger:.04,scrollTrigger:{trigger:'.prc__g',start:'top 85%'}});G.from('.pay__b div,.cnc__s',{scaleX:0,duration:1,ease:'expo.inOut',stagger:.12,scrollTrigger:{trigger:'.prc__r',start:'top 88%'}})}
+}
+[['.stp__l li','.stp__l'],['.pgc__c','.pgc'],['.who__d div','.who__d'],['.chk li','.chk'],['.cq__r>*','.cq__g']].forEach(([a,t])=>{if($(t))G.from(a,{y:50,opacity:0,duration:1,ease:'expo.out',stagger:.08,scrollTrigger:{trigger:t,start:'top 85%'}})});
+if($('.cch'))G.fromTo('.cch__m',{clipPath:'inset(100% 0 0 0)'},{clipPath:'inset(0% 0 0 0)',duration:1.4,ease:'expo.inOut',scrollTrigger:{trigger:'.cch',start:'top 80%'}});
+if($('.cpr__c'))G.from('.cpr__c',{y:60,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.cpr__c',start:'top 88%'}});
+if($('.sc'))G.from('.sc',{y:60,opacity:0,duration:1.1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.sty2__g',start:'top 85%'}});
+if($('.tl'))G.from('.tl__s',{y:40,opacity:0,duration:.9,ease:'expo.out',stagger:.07,scrollTrigger:{trigger:'.tl',start:'top 90%'}});
+if($('.pr2__card'))G.from('.pr2__card,.pl',{y:50,opacity:0,duration:1,ease:'expo.out',stagger:.08,scrollTrigger:{trigger:'.pr2__g',start:'top 85%'}});
 // kicker dots pop
 $$('.kicker i').forEach(i=>G.from(i,{scale:0,duration:.8,ease:'back.out(3)',scrollTrigger:{trigger:i,start:'top 92%'}}));
 addEventListener('load',()=>ST.refresh());

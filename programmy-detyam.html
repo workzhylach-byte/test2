@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#0D0E0C">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Onest:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=d2299443">
+<link rel="stylesheet" href="assets/style.css?v=c7a29afa">
 </head>
 <body data-page="programs-kids">
 
@@ -38,17 +38,17 @@
       <a href="index.html" class="logo" aria-label="Про теннис Виктори — на главную"><svg class="lm" viewBox="0 0 120 120" aria-hidden="true"><path d="M14 24 L57 91 L104 24" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"/><circle cx="103" cy="23" r="15" fill="#DCF23A"/><path d="M94 12Q111 23 95 35M112 12Q99 24 113 34" fill="none" stroke="#131417" stroke-width="1.8"/></svg><span>Pro Tennis<br>Viktory</span></a>
       <!-- Меню по прототипу Figma. data-page — внутренняя страница (подключаем при вёрстке остальных страниц) -->
       <nav class="nav" aria-label="Основное меню">
-        <div><a class="n dd-t" href="#programs">Программы</a><div class="dd"><div><a href="#programs" data-f="kids" data-page="programs-kids">Программы для детей <small>от 4 лет</small></a><a href="#programs" data-f="adults" data-page="programs-adults">Программы для взрослых <small>любой уровень</small></a></div></div></div>
+        <div><a class="n dd-t" href="#programs" data-page="home-programs">Программы</a><div class="dd"><div><a href="#programs" data-f="kids" data-page="programs-kids">Программы для детей <small>от 4 лет</small></a><a href="#programs" data-f="adults" data-page="programs-adults">Программы для взрослых <small>любой уровень</small></a></div></div></div>
         <div><a class="n" href="#coaches" data-page="coaches">Тренеры</a></div>
         <div><a class="n" href="#prices" data-page="prices">Цены</a></div>
-        <div><a class="n dd-t" href="#about">О клубе</a><div class="dd"><div><a href="#about" data-page="about">О клубе <small>корты и инфраструктура</small></a><a href="#coaches" data-page="team">Команда <small>администрация клуба</small></a><a href="#kitchen" data-page="cafe">Кафе и меню <small>«Сегодня»</small></a></div></div></div>
-        <div><a class="n dd-t" href="#camps">Мероприятия и турниры</a><div class="dd"><div><a href="#camps" data-page="camps">Выездные кэмпы <small>Сочи · Турция</small></a><a href="#programs" data-f="comp" data-page="tournaments-kids">Детские турниры <small>10S «Яркие мячи»</small></a><a href="#programs" data-f="comp" data-page="tournaments-adults">Взрослые турниры <small>РТТ · ФПР · АММаТур · Lunda</small></a><a href="#programs" data-f="events" data-page="corporate">Корпоративные мероприятия <small>под ключ</small></a><a href="#programs" data-f="events" data-page="birthdays">Детские дни рождения <small>5–14 лет</small></a></div></div></div>
+        <div><a class="n dd-t" href="#about" data-page="about">О клубе</a><div class="dd"><div><a href="#about" data-page="about">О клубе <small>корты и инфраструктура</small></a><a href="#coaches" data-page="team">Команда <small>администрация клуба</small></a><a href="#kitchen" data-page="cafe">Кафе и меню <small>«Сегодня»</small></a></div></div></div>
+        <div><a class="n dd-t" href="#camps" data-page="events">Мероприятия и турниры</a><div class="dd"><div><a href="#camps" data-page="camps">Выездные кэмпы <small>Сочи · Турция</small></a><a href="#programs" data-f="comp" data-page="tournaments-kids">Детские турниры <small>10S «Яркие мячи»</small></a><a href="#programs" data-f="comp" data-page="tournaments-adults">Взрослые турниры <small>РТТ · ФПР · АММаТур · Lunda</small></a><a href="#programs" data-f="events" data-page="corporate">Корпоративные мероприятия <small>под ключ</small></a><a href="#programs" data-f="events" data-page="birthdays">Детские дни рождения <small>5–14 лет</small></a></div></div></div>
         <div><a class="n dd-t" href="#news" data-page="news">Новости</a><div class="dd"><div><a href="#news" data-page="news-events">События <small>турниры, кэмпы, мероприятия</small></a><a href="#news" data-page="news-news">Новости <small>жизнь клуба, расписание</small></a><a href="#news" data-page="news-articles">Статьи <small>техника, экипировка, питание</small></a></div></div></div>
         <div><a class="n" href="#contacts" data-page="contacts">Контакты</a></div>
       </nav>
       <div class="bar__r">
         <button class="bt bt--sm bt--ball" data-modal="book">Забронировать</button>
-        <a class="mph" href="tel:+7495" aria-label="Позвонить в клуб"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.6l1.4 4-2 1.4a12 12 0 0 0 6.5 6.5l1.4-2 4 1.4v2.6a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></a><button class="bt bt--sm bt--ball mrec" data-modal="trial">Записаться</button>
+        <div class="lang mlang" role="group" aria-label="Язык"><button class="on">RU</button><button data-toast="EN-версия подключается на этапе вёрстки">EN</button></div><a class="mph" href="tel:+7495" aria-label="Позвонить в клуб"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.6l1.4 4-2 1.4a12 12 0 0 0 6.5 6.5l1.4-2 4 1.4v2.6a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></a><button class="bt bt--sm bt--ball mrec" data-modal="trial">Записаться</button>
         <button class="burger" id="burger" aria-label="Меню"><i></i></button>
       </div>
     </div>
@@ -59,16 +59,16 @@
   <nav>
     <a href="#programs">Программы <small>01</small></a>
     <a href="#coaches" data-page="coaches">Тренеры <small>02</small></a>
-    <a href="#prices">Цены <small>03</small></a>
-    <a href="#about">О клубе <small>04</small></a>
-    <a href="#camps">Мероприятия и турниры <small>05</small></a>
-    <a href="#news">Новости <small>06</small></a>
-    <a href="#contacts">Контакты <small>07</small></a>
+    <a href="#prices" data-page="prices">Цены <small>03</small></a>
+    <a href="#about" data-page="about">О клубе <small>04</small></a>
+    <a href="#camps" data-page="camps">Мероприятия и турниры <small>05</small></a>
+    <a href="#news" data-page="news">Новости <small>06</small></a>
+    <a href="#contacts" data-page="contacts">Контакты <small>07</small></a>
   </nav>
   <div class="mm__sub">
-    <a href="#programs" data-f="kids">Для детей</a><a href="#programs" data-f="adults">Для взрослых</a><a href="#coaches" data-page="team">Команда</a><a href="#kitchen">Кафе «Сегодня»</a><a href="#camps">Кэмпы</a><a href="#programs" data-f="comp">Турниры</a><a href="#programs" data-f="events">Корпоративы и дни рождения</a>
+    <a href="#programs" data-page="programs-kids">Для детей</a><a href="#programs" data-page="programs-adults">Для взрослых</a><a href="#coaches" data-page="team">Команда</a><a href="#kitchen" data-page="cafe">Кафе «Сегодня»</a><a href="#camps" data-page="camps">Кэмпы</a><a href="#" data-page="tournaments-kids">Детские турниры</a><a href="#" data-page="tournaments-adults">Взрослые турниры</a><a href="#" data-page="corporate">Корпоративы</a><a href="#" data-page="birthdays">Дни рождения</a>
   </div>
-  <div class="hso mm__so"><a href="https://t.me/ProTennisViktory_bot" aria-label="Telegram"><svg viewBox="0 0 24 24"><path d="M21.5 3.5L2.8 10.7c-1 .4-1 1.6 0 1.9l4.7 1.5 1.8 5.6c.3.8 1.3 1 1.9.4l2.6-2.5 4.9 3.6c.7.5 1.6.1 1.8-.7l3-15.3c.2-1-.8-1.8-1.9-1.4zM9.6 14.4l-.5 4-1.4-4.6 9.9-6.3-8 6.9z" fill="currentColor"/></svg></a><a href="https://vk.com/protennisviktory" aria-label="ВКонтакте"><svg viewBox="0 0 24 24"><path d="M12.8 17.5C6.6 17.5 3.1 13.3 3 6.5h3.1c.1 5 2.3 7.1 4 7.5V6.5h2.9v4.3c1.7-.2 3.5-2.1 4.1-4.3H20c-.5 2.7-2.5 4.6-3.9 5.4 1.4.7 3.6 2.4 4.5 5.6h-3.2c-.7-2.1-2.4-3.8-4.6-4v4h-.3z" fill="currentColor"/></svg></a><a href="https://instagram.com/protennisviktory" aria-label="Instagram*"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a><div class="lang" style="margin-left:auto"><button class="on">RU</button><button data-toast="EN-версия подключается на этапе вёрстки">EN</button></div></div>
+  <div class="hso mm__so"><a href="https://t.me/ProTennisViktory_bot" aria-label="Telegram"><svg viewBox="0 0 24 24"><path d="M21.5 3.5L2.8 10.7c-1 .4-1 1.6 0 1.9l4.7 1.5 1.8 5.6c.3.8 1.3 1 1.9.4l2.6-2.5 4.9 3.6c.7.5 1.6.1 1.8-.7l3-15.3c.2-1-.8-1.8-1.9-1.4zM9.6 14.4l-.5 4-1.4-4.6 9.9-6.3-8 6.9z" fill="currentColor"/></svg></a><a href="https://vk.com/protennisviktory" aria-label="ВКонтакте"><svg viewBox="0 0 24 24"><path d="M12.8 17.5C6.6 17.5 3.1 13.3 3 6.5h3.1c.1 5 2.3 7.1 4 7.5V6.5h2.9v4.3c1.7-.2 3.5-2.1 4.1-4.3H20c-.5 2.7-2.5 4.6-3.9 5.4 1.4.7 3.6 2.4 4.5 5.6h-3.2c-.7-2.1-2.4-3.8-4.6-4v4h-.3z" fill="currentColor"/></svg></a><a href="https://instagram.com/protennisviktory" aria-label="Instagram*"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a></div>
   <div class="mm__b">
     <button class="bt bt--ball" data-modal="book">Забронировать корт</button>
     <button class="bt" data-modal="trial">Записаться на пробное занятие</button>
@@ -82,28 +82,40 @@
 
 <main>
 <section class="phx" id="hero">
-  <div class="phx__bg" aria-hidden="true"><img data-img="02_children_tennis" alt="" style="object-position:60% 40%"></div>
+  <div class="phx__bg" aria-hidden="true"><img data-img="02_children_tennis" alt="Ребёнок и тренер на занятии" style="object-position:60% 40%"></div>
   <div class="wrap phx__w">
-    <nav class="bc" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span>/</span><a href="index.html#programs">Программы</a><span>/</span><span aria-current="page">Для детей</span></nav>
+    <nav class="bc" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span>/</span><span aria-current="page">Программы для детей</span></nav>
     <div class="phx__c">
-      <div class="kicker"><i></i><span class="mono">Pro Tennis Viktory · Детям от 4 лет</span></div>
-      <h1 class="h1 h1--m"><span class="ln"><span>Первый интерес</span></span><span class="ln"><span>к игре.</span></span><span class="ln"><span class="o">Следующий шаг</span></span><span class="ln"><span class="o">в спорте</span></span></h1>
+      <div class="kicker"><i></i><span class="mono">Pro Tennis Viktory · детям от 4 лет</span></div>
+      <h1 class="h1 h1--m"><span class="ln"><span>Первый интерес</span></span><span class="ln"><span>к игре</span></span><span class="ln"><span class="o">Следующий шаг</span></span><span class="ln"><span class="o">в спорте</span></span></h1>
       <p class="lead">Теннис, падел, ОФП и ЛФК. Выбираем занятия с учётом возраста, подготовки и темперамента ребёнка.</p>
       <div class="ph__ctas"><a href="#dirs" class="bt bt--ball">Посмотреть направления <svg viewBox="0 0 14 14"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></a><a href="#pick" class="bt">Подобрать занятие</a></div>
     </div>
-    <div class="phx__tag"><b>Tennis 10S</b><span>методика ITF · мягкие мячи, укороченные корты</span></div>
-    <div class="ph__f phx__f"><div><b>4+</b><span>года — возраст первых занятий</span></div><div><b>5</b><span>направлений: теннис, теннис + ОФП, падел, ОФП, ЛФК</span></div><div><b>4–6</b><span>детей в мини-группе по теннису</span></div><div><b>2 ч</b><span>— ответ спортивного директора на заявку</span></div></div>
   </div>
-  <span class="phx__note mono">3D-визуализация · фото после съёмки</span>
 </section>
 
 <nav class="psub" id="dirs" aria-label="Направления"><div class="wrap"><span class="mono">Направления</span><div class="psub__l"><a href="#tennis"><b>01</b>Теннис<small>4–16 лет</small></a><a href="#group"><b>02</b>Групповые занятия<small>5–12 лет</small></a><a href="#padel"><b>03</b>Падел<small>6–14 лет</small></a><a href="#ofp"><b>04</b>ОФП<small>5–16 лет</small></a><a href="#lfk"><b>05</b>ЛФК<small>4–14 лет</small></a></div></div></nav>
 
-<section class="sec pix" id="intro">
+<section class="sec pin" id="intro">
   <div class="wrap">
-    <div class="kicker"><i></i><span class="mono">Детская академия</span></div>
-    <p class="pix__t">Детские программы «Про теннис Виктори» — продуманная система развития ребёнка через спорт.</p>
-    <div class="pix__g"><div class="pix__x"><p>Мы принимаем детей от 4 лет и выстраиваем тренировочный процесс с учётом возраста, физической подготовки и темперамента.</p><p>Тренеры используют международную методику Tennis 10S с адаптированным инвентарём — мягкими мячами и укороченными кортами. Так каждый ребёнок чувствует успех с первого занятия.</p><p>Ниже — все направления. Если не уверены, с чего начать, заполните форму «Подобрать занятие», и спортивный директор свяжется с вами в течение 2 часов.</p></div><a href="#pick" class="bt bt--fill">Подобрать занятие <svg viewBox="0 0 14 14"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></a></div>
+    <div class="pin__top">
+      <div class="pin__s">
+        <div class="kicker"><i></i><span class="mono">Детская академия · от 4 лет</span></div>
+        <p class="pin__t">Детские программы «Про теннис Виктори» — это продуманная <mark>система развития</mark> ребёнка через спорт.</p>
+        <p class="pin__x">Ниже — все направления: теннис, падел, ОФП и ЛФК.</p>
+      </div>
+      <div class="pin__lad pin__lad--k" aria-label="Ступени Tennis 10S: Red, Orange, Green">
+        <span class="mono pin__lk">Tennis 10S · путь игрока</span>
+        <div class="pin__bars"><div style="--h:58%;--c:#E5484D"><b>Red</b><small>4–6 лет</small></div><div style="--h:78%;--c:#F28C28"><b>Orange</b><small>7–8 лет</small></div><div style="--h:100%;--c:#7CC242"><b>Green</b><small>9–10 лет</small></div></div>
+        <div class="pin__ends"><span>Первое занятие</span><span>Готовность к турнирам</span></div>
+      </div>
+    </div>
+    <div class="pin__g" data-rv>
+      <div class="pin__c"><b>4+</b><p>Выстраиваем тренировочный процесс с учётом возраста, физической подготовки и темперамента</p></div>
+      <div class="pin__c"><b>10S</b><p>Международная методика с адаптированным инвентарём: мягкие мячи, укороченные корты</p></div>
+      <div class="pin__c"><b>Успех</b><p>Каждый ребёнок чувствует успех с первого занятия</p></div>
+      <div class="pin__c pin__c--l"><p>Не уверены, с чего начать? Спортивный директор свяжется с вами в течение 2 часов.</p><a href="#pick" class="bt bt--fill">Подобрать занятие <svg viewBox="0 0 14 14"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></a></div>
+    </div>
   </div>
 </section>
 
@@ -112,15 +124,15 @@
   <div class="wrap pv__g">
     <header class="pv__h">
       <span class="pv__n" aria-hidden="true">01</span>
-      <div class="pv__age"><i></i><span class="mono">4–16 лет</span></div>
+      <div class="pv__age"><i></i><span class="mono">01 · 4–16 лет</span></div>
       <h2 class="pv__t">Теннис для детей<br><span class="o">Программа Tennis 10S</span></h2>
-      <p class="pv__cap mono">Групповые и индивидуальные занятия</p>
+      <p class="pv__cap mono">Теннис для детей · групповые и индивидуальные занятия</p>
     </header>
     <div class="pv__c">
       <div class="pv__x"><p>Занятия по международной системе ITF Tennis 10S. Дети осваивают технику ударов, перемещение по корту, тактику и игровое мышление в формате, соответствующем их возрасту. Результат — уверенное владение ракеткой, любовь к спорту и готовность к турнирам.</p><p>Группы формируются по возрасту и уровню. Начать можно без опыта; для продвинутых игроков предусмотрено входное тестирование.</p></div>
       <div class="pv__st"><span class="st-red"><i></i><b>Red</b><small>4–6 лет · красный мяч</small></span><span class="st-orange"><i></i><b>Orange</b><small>7–8 лет · оранжевый мяч</small></span><span class="st-green"><i></i><b>Green</b><small>9–10 лет · зелёный мяч</small></span></div>
       <dl class="pv__sp"><div><dt>Мини-группа</dt><dd>4–6 человек</dd></div><div><dt>Длительность</dt><dd>60 минут</dd></div><div><dt>Частота</dt><dd>2–3 раза в неделю</dd></div><div><dt>Индивидуально</dt><dd>45–60 минут</dd></div></dl>
-      <div class="pv__p"><ul class="pv__pr"><li><span>Разовое занятие</span><b>от X XXX ₽</b></li><li><span>Абонемент на 8 занятий</span><b>от XX XXX ₽</b></li><li><span>Пробное занятие</span><b>X XXX ₽</b></li></ul><p class="pv__pn">Точные цены появятся за 4 недели до запуска <span class="tbd">уточнить</span></p></div>
+      <div class="pv__p"><p class="pv__pn"><b>Стоимость</b></p><ul class="pv__pr"><li><span>Разовое занятие</span><b>от X XXX ₽</b></li><li><span>Абонемент на 8 занятий</span><b>от XX XXX ₽</b></li><li><span>Пробное занятие</span><b>X XXX ₽</b></li></ul></div>
       <div class="pv__l"><a href="#" class="lnk" data-page="coaches">Тренеры <svg viewBox="0 0 14 14"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></a><a href="#" class="lnk" data-modal="book">Расписание <svg viewBox="0 0 14 14"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></a></div>
       <div class="pv__btns"><button class="bt bt--ball" data-modal="trial">Записаться на пробное</button><button class="bt" data-modal="group" data-dir="Теннис 10S">Оставить заявку в группу</button><button class="bt" data-modal="coach">Индивидуальное занятие</button></div>
       <div class="pd__d"><button type="button" class="pd__ds" aria-expanded="false">Что взять и как проходит первое посещение<i></i></button><div class="pd__dc"><div><p>Спортивная форма и кроссовки с немаркой подошвой. Ракетку можно взять в аренду. Медицинская справка — при оформлении абонемента. Запись в группу — через форму на сайте, индивидуальные занятия — через YCLIENTS.</p></div></div></div>
@@ -132,18 +144,17 @@
   <div class="wrap pv__g">
     <header class="pv__h">
       <span class="pv__n" aria-hidden="true">02</span>
-      <div class="pv__age"><i></i><span class="mono">5–12 лет</span></div>
+      <div class="pv__age"><i></i><span class="mono">02 · 5–12 лет</span></div>
       <h2 class="pv__t">Групповые занятия<br><span class="o">Теннис + ОФП</span></h2>
-      <p class="pv__cap mono">Теннис и физическая подготовка</p>
+      <p class="pv__cap mono">Групповые занятия · теннис и физическая подготовка</p>
     </header>
     <div class="pv__c">
       <div class="pv__x"><p>Комбинированные тренировки, объединяющие элементы тенниса и общей физической подготовки. Развивают координацию, ловкость, скорость реакции и выносливость.</p><p>Идеально для детей, которые хотят попробовать ракеточные виды спорта и одновременно укрепить здоровье. Без требований к уровню.</p></div>
-      
       <dl class="pv__sp"><div><dt>Группа</dt><dd>6–8 человек</dd></div><div><dt>Длительность</dt><dd>60 минут</dd></div><div><dt>Частота</dt><dd>2 раза в неделю</dd></div><div><dt>Занятия ведут</dt><dd>Тренер по теннису и тренер по ОФП</dd></div></dl>
       <div class="pv__p"><p class="pv__pn"><b>Стоимость</b> <span class="tbd">требует уточнения</span></p><p class="pv__pn">Предусмотрено пробное занятие по специальной цене.</p></div>
       <div class="pv__l"><a href="#" class="lnk" data-page="coaches">Тренеры <svg viewBox="0 0 14 14"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></a><a href="#" class="lnk" data-modal="book">Расписание <svg viewBox="0 0 14 14"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></a></div>
       <div class="pv__btns"><button class="bt bt--ball" data-modal="group" data-dir="Теннис + ОФП">Оставить заявку в группу</button><button class="bt" data-modal="trial">Записаться на пробное</button></div>
-      <div class="pd__d"><button type="button" class="pd__ds" aria-expanded="false">Что взять и как проходит первое посещение<i></i></button><div class="pd__dc"><div><p>Спортивная форма и кроссовки. Инвентарь для занятий выдаёт клуб.</p></div></div></div>
+      <div class="pd__d"><button type="button" class="pd__ds" aria-expanded="false">Что взять на занятие<i></i></button><div class="pd__dc"><div><p>Спортивная форма и кроссовки. Инвентарь для занятий выдаёт клуб.</p></div></div></div>
     </div>
   </div>
 </section>
@@ -152,15 +163,14 @@
   <div class="wrap pv__g">
     <header class="pv__h">
       <span class="pv__n" aria-hidden="true">03</span>
-      <div class="pv__age"><i></i><span class="mono">6–14 лет</span></div>
+      <div class="pv__age"><i></i><span class="mono">03 · 6–14 лет</span></div>
       <h2 class="pv__t">Падел для детей</h2>
-      <p class="pv__cap mono">Знакомство с парной игрой</p>
+      <p class="pv__cap mono">Падел · знакомство с парной игрой</p>
     </header>
     <div class="pv__c">
-      <div class="pv__x"><p>Знакомство с самым быстрорастущим ракеточным видом спорта в мире. Падел проще тенниса на старте — корт меньше, мяч мягче, правила интуитивны.</p><p>Дети быстро начинают играть в парах, что развивает командное мышление и коммуникацию. Начать можно без опыта.</p></div>
-      
+      <div class="pv__x"><p>Знакомство с самым быстрорастущим ракеточным видом спорта в мире. Падел проще тенниса на старте — корт меньше, мяч мягче, правила интуитивны. Дети быстро начинают играть в парах, что развивает командное мышление и коммуникацию. Начать можно без опыта</p></div>
       <dl class="pv__sp"><div><dt>Мини-группа</dt><dd>4 человека · 2 пары</dd></div><div><dt>Длительность</dt><dd>60 минут</dd></div><div><dt>Частота</dt><dd>2 раза в неделю</dd></div><div><dt>Занятия ведёт</dt><dd>Тренер по паделу</dd></div></dl>
-      <div class="pv__p"><p class="pv__pn"><b>Стоимость</b> <span class="tbd">требует уточнения</span></p><p class="pv__pn">Пробное занятие предусмотрено, стоимость уточняется.</p></div>
+      <div class="pv__p"><p class="pv__pn"><b>Стоимость</b> <span class="tbd">требует уточнения</span></p><p class="pv__pn">Пробное занятие предусмотрено. Его стоимость уточняется.</p></div>
       <div class="pv__l"><a href="#" class="lnk" data-page="coaches">Тренеры <svg viewBox="0 0 14 14"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></a><a href="#" class="lnk" data-modal="book">Расписание <svg viewBox="0 0 14 14"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></a></div>
       <div class="pv__btns"><button class="bt bt--ball" data-modal="group" data-dir="Падел">Оставить заявку в группу</button><button class="bt" data-modal="trial">Записаться на пробное</button></div>
       <div class="pd__d"><button type="button" class="pd__ds" aria-expanded="false">Инвентарь и первое посещение<i></i></button><div class="pd__dc"><div><p>Ракетки и мячи предоставляются. Нужна спортивная форма и кроссовки с немаркой подошвой.</p></div></div></div>
@@ -172,18 +182,16 @@
   <div class="wrap pv__g">
     <header class="pv__h">
       <span class="pv__n" aria-hidden="true">04</span>
-      <div class="pv__age"><i></i><span class="mono">5–16 лет</span></div>
+      <div class="pv__age"><i></i><span class="mono">04 · 5–16 лет</span></div>
       <h2 class="pv__t">ОФП для юных<br><span class="o">спортсменов</span></h2>
-      <p class="pv__cap mono">Самостоятельная программа или дополнение к игре</p>
+      <p class="pv__cap mono">ОФП · самостоятельная программа или дополнение к игре</p>
     </header>
     <div class="pv__c">
-      <div class="pv__x"><p>Специализированная функциональная подготовка в зоне ОФП клуба. Программа направлена на развитие силы, гибкости, координации и профилактику травм.</p><p>Подходит как дополнение к теннису и паделу, так и как самостоятельное направление для общего физического развития.</p></div>
-      
-      <dl class="pv__sp"><div><dt>Группа</dt><dd>6–10 человек, по возрасту</dd></div><div><dt>Длительность</dt><dd>45–60 минут</dd></div><div><dt>Частота</dt><dd>2–3 раза в неделю</dd></div><div><dt>Занятия ведёт</dt><dd>Тренер по ОФП с сертификацией по детской фитнес-подготовке</dd></div></dl>
+      <div class="pv__x"><p>Специализированная функциональная подготовка в зоне ОФП клуба. Программа направлена на развитие силы, гибкости, координации и профилактики травм. Подходит как дополнение к теннису/паделу, так и как самостоятельное направление для общего физического развития.</p></div>
+      <dl class="pv__sp"><div><dt>Группа</dt><dd>6–10 человек</dd></div><div><dt>Длительность</dt><dd>45–60 минут</dd></div><div><dt>Частота</dt><dd>2–3 раза в неделю</dd></div><div><dt>Занятия ведёт</dt><dd>Тренер по ОФП с сертификацией по детской фитнес-подготовке</dd></div></dl>
       <div class="pv__p"><p class="pv__pn"><b>Стоимость</b> <span class="tbd">требует уточнения</span></p></div>
       <div class="pv__l"><a href="#" class="lnk" data-page="coaches">Тренеры <svg viewBox="0 0 14 14"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></a><a href="#" class="lnk" data-modal="book">Расписание <svg viewBox="0 0 14 14"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></a></div>
       <div class="pv__btns"><button class="bt bt--ball" data-modal="group" data-dir="ОФП">Оставить заявку в группу</button></div>
-      <div class="pd__d"><button type="button" class="pd__ds" aria-expanded="false">Что взять и как проходит первое посещение<i></i></button><div class="pd__dc"><div><p>Спортивная форма и кроссовки. Занятия проходят в зоне ОФП 200 м².</p></div></div></div>
     </div>
   </div>
 </section>
@@ -192,18 +200,16 @@
   <div class="wrap pv__g">
     <header class="pv__h">
       <span class="pv__n" aria-hidden="true">05</span>
-      <div class="pv__age"><i></i><span class="mono">4–14 лет</span></div>
-      <h2 class="pv__t">ЛФК для детей<br><span class="o">Лечебная физкультура</span></h2>
-      <p class="pv__cap mono">Программа после консультации</p>
+      <div class="pv__age"><i></i><span class="mono">05 · 4–14 лет</span></div>
+      <h2 class="pv__t">ЛФК для детей<br><span class="o">Лечебная физкультура для детей</span></h2>
+      <p class="pv__cap mono">ЛФК · программа после консультации</p>
     </header>
     <div class="pv__c">
       <div class="pv__x"><p>Коррекционные занятия для детей с нарушениями осанки, сколиозом, плоскостопием и другими ортопедическими особенностями.</p><p>Программа разрабатывается индивидуально после консультации. Занятия проходят в зоне ОФП под контролем специалиста. Направление от ортопеда или педиатра желательно, но не обязательно.</p></div>
-      
-      <dl class="pv__sp"><div><dt>Формат</dt><dd>Индивидуально или группа до 3 детей</dd></div><div><dt>Длительность</dt><dd>40–45 минут</dd></div><div><dt>Частота</dt><dd>2–3 раза в неделю</dd></div><div><dt>Занятия ведёт</dt><dd>Специалист по ЛФК с медицинским образованием</dd></div></dl>
-      <div class="pv__p"><p class="pv__pn"><b>Стоимость</b> <span class="tbd">требует уточнения</span></p><p class="pv__pn">Первое занятие — консультация и диагностика.</p></div>
+      <dl class="pv__sp"><div><dt>Формат</dt><dd>Индивидуально / группа до 3 детей</dd></div><div><dt>Длительность</dt><dd>40–45 минут</dd></div><div><dt>Частота</dt><dd>2–3 раза в неделю</dd></div><div><dt>Занятия ведёт</dt><dd>Специалист по ЛФК с медицинским образованием</dd></div></dl>
+      <div class="pv__p"><p class="pv__pn"><b>Стоимость</b> <span class="tbd">требует уточнения</span></p><p class="pv__pn">Первое занятие — консультация + диагностика</p></div>
       <div class="pv__l"><a href="#" class="lnk" data-page="coaches">Тренеры <svg viewBox="0 0 14 14"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></a><a href="#" class="lnk" data-modal="book">Расписание <svg viewBox="0 0 14 14"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></a></div>
       <div class="pv__btns"><button class="bt bt--ball" data-modal="group" data-dir="ЛФК">Оставить заявку на консультацию</button></div>
-      <div class="pd__d"><button type="button" class="pd__ds" aria-expanded="false">Что взять и как проходит первое посещение<i></i></button><div class="pd__dc"><div><p>Удобная спортивная форма. Если есть заключение ортопеда или педиатра — возьмите его на консультацию.</p></div></div></div>
     </div>
   </div>
 </section>
@@ -212,17 +218,17 @@
   <div class="wrap pk__g">
     <div>
       <div class="kicker"><i></i><span class="mono">Поможем с выбором</span></div>
-      <h2 class="h2"><span class="ln"><span>С какого</span></span><span class="ln"><span>занятия</span></span><span class="ln"><span class="o">начать?</span></span></h2>
+      <h2 class="h2"><span class="ln"><span>С какого</span></span><span class="ln"><span>занятия</span></span><span class="ln"><span class="o">начать</span></span></h2>
       <p class="lead" style="margin-top:26px">Расскажите, сколько лет ребёнку, занимался ли он раньше и какое направление вам интересно. Спортивный директор поможет подобрать занятие и свяжется с вами в течение 2 часов.</p>
       <p class="pk__n">Заявка не бронирует конкретное время и не подтверждает место в группе. Детали занятия согласуются отдельно.</p>
     </div>
     <form class="pk__f pk__f--d" novalidate data-inline data-okh="Спасибо! Заявка на подбор принята" data-okp="Спортивный директор свяжется с вами в течение 2 часов.">
       <h3>Подобрать занятие</h3>
       <div class="f2"><label class="fl"><span>Ваше имя *</span><input required autocomplete="name"></label><label class="fl"><span>Телефон *</span><input required type="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__"></label></div>
-      <div class="f2"><label class="fl"><span>Возраст ребёнка *</span><input required inputmode="numeric" placeholder="например, 6 лет"></label><label class="fl"><span>Направление *</span><select required><option>Нужна помощь с выбором</option><option>Теннис 10S</option><option>Теннис + ОФП</option><option>Падел</option><option>ОФП</option><option>ЛФК</option></select></label></div>
-      <label class="fl"><span>Опыт занятий</span><select><option>Выберите при желании</option><option>Без опыта</option><option>Занимался меньше года</option><option>Занимается больше года</option><option>Участвовал в турнирах</option></select></label>
+      <div class="f2"><label class="fl"><span>Возраст ребёнка *</span><input required inputmode="numeric"></label><label class="fl"><span>Направление *</span><select required><option>Нужна помощь с выбором</option><option>Теннис 10S</option><option>Теннис + ОФП</option><option>Падел</option><option>ОФП</option><option>ЛФК</option></select></label></div>
+      <label class="fl"><span>Опыт занятий</span><select><option>Без опыта</option><option>Занимался меньше года</option><option>Занимается больше года</option><option>Участвовал в турнирах</option></select></label>
       <label class="fl"><span>Удобное время или вопрос</span><textarea placeholder="Не указывайте медицинские сведения"></textarea></label>
-      <label class="ck"><input type="checkbox" data-req><span>Нажимая «Отправить», вы даёте согласие на обработку персональных данных в соответствии с <a href="#">Политикой обработки персональных данных</a> ООО «Про теннис Виктори»</span></label>
+      <label class="ck"><input type="checkbox" data-req><span>Нажимая кнопку «Отправить», вы даёте согласие на обработку персональных данных в соответствии с <a href="#" data-page="policy">Политикой обработки персональных данных</a> ООО «Про теннис Виктори»</span></label>
       <button class="bt bt--ball" type="submit" disabled style="width:100%">Отправить заявку на подбор</button>
       <p class="pk__s">* Обязательные поля. Данные взрослого представителя</p>
     </form>
@@ -231,12 +237,12 @@
 
 <section class="sec fvv" id="first">
   <div class="wrap">
-    <div class="kicker"><i></i><span class="mono">Важно знать</span></div>
     <h2 class="h2"><span class="ln"><span>Перед первым</span></span><span class="ln"><span class="o">посещением</span></span></h2>
-    <div class="fvv__g"><div><b>01</b><h3>Форма и обувь</h3><p>Возьмите спортивную форму и сменную спортивную обувь. Для тенниса — кроссовки с немаркой подошвой.</p></div><div><b>02</b><h3>Участие родителя</h3><p>Для детей до 14 лет требуется присутствие или письменное согласие родителя.</p></div><div><b>03</b><h3>Запись и документы</h3><p>Пробное занятие — по предварительной записи. Для теннисного абонемента нужна медицинская справка. Условия ЛФК уточняются перед консультацией.</p></div></div>
-    <div class="fvv__b"><a href="#" class="bt">Правила посещения клуба</a><a href="index.html#contacts" class="bt" data-page="contacts">Контакты клуба</a></div>
+    <div class="fvv__g"><div><b>01</b><h3>Форма и обувь</h3><p>Возьмите спортивную форму и сменную спортивную обувь. Для тенниса — кроссовки с немаркой подошвой.</p></div><div><b>02</b><h3>Участие родителя</h3><p>Для детей до 14 лет требуется присутствие или письменное согласие родителя</p></div><div><b>03</b><h3>Запись и документы</h3><p>Пробное занятие — по предварительной записи. Для теннисного абонемента нужна медицинская справка. Условия ЛФК уточняются перед консультацией.</p></div></div>
+    <div class="fvv__b"><a href="#" class="bt" data-page="rules">Правила посещения клуба</a><a href="index.html#contacts" class="bt" data-page="contacts">Контакты клуба</a></div>
   </div>
 </section>
+
 </main>
 
 
@@ -256,9 +262,9 @@
         <a class="fx__mail" href="mailto:info@protennisviktory.ru">info@protennisviktory.ru</a>
         <p>г. Москва, Пятницкое шоссе · 7 минут пешком от м. Войковская<br>Клуб — ежедневно 07:00–23:00 · кафе — 07:00–22:00</p>
       </div>
-      <div class="fx__cell"><span class="mono">Заниматься</span><ul><li><a href="#programs">Программы для детей</a></li><li><a href="#programs">Программы для взрослых</a></li><li><a href="#coaches" data-page="coaches">Тренеры</a></li><li><a href="#prices">Цены, абонементы, карты</a></li><li><a href="#" data-modal="book">Расписание и запись</a></li></ul></div>
-      <div class="fx__cell"><span class="mono">Участвовать</span><ul><li><a href="#programs">Детские турниры</a></li><li><a href="#programs">Взрослые турниры</a></li><li><a href="#camps">Выездные кэмпы</a></li><li><a href="#programs">Корпоративные мероприятия</a></li><li><a href="#programs">Детские дни рождения</a></li><li><a href="#" data-modal="partner">Поиск партнёра по игре</a></li></ul></div>
-      <div class="fx__cell"><span class="mono">Узнать о клубе</span><ul><li><a href="#about">О клубе</a></li><li><a href="#gallery">Фотогалерея</a></li><li><a href="#coaches" data-page="team">Команда</a></li><li><a href="#kitchen">Кафе и меню</a></li><li><a href="#news">События, новости и статьи</a></li><li><a href="#contacts">Контакты</a></li></ul></div>
+      <div class="fx__cell"><span class="mono">Заниматься</span><ul><li><a href="#programs" data-page="programs-kids">Программы для детей</a></li><li><a href="#programs" data-page="programs-adults">Программы для взрослых</a></li><li><a href="#coaches" data-page="coaches">Тренеры</a></li><li><a href="#prices" data-page="prices">Цены, абонементы, карты</a></li><li><a href="#" data-page="schedule">Расписание и запись</a></li></ul></div>
+      <div class="fx__cell"><span class="mono">Участвовать</span><ul><li><a href="#" data-page="tournaments-kids">Детские турниры</a></li><li><a href="#" data-page="tournaments-adults">Взрослые турниры</a></li><li><a href="#camps" data-page="camps">Выездные кэмпы</a></li><li><a href="#" data-page="corporate">Корпоративные мероприятия</a></li><li><a href="#" data-page="birthdays">Детские дни рождения</a></li><li><a href="#" data-modal="partner">Поиск партнёра по игре</a></li></ul></div>
+      <div class="fx__cell"><span class="mono">Узнать о клубе</span><ul><li><a href="#about" data-page="about">О клубе</a></li><li><a href="#gallery" data-page="about-tour">Фотогалерея</a></li><li><a href="#coaches" data-page="team">Команда</a></li><li><a href="#kitchen" data-page="cafe">Кафе и меню</a></li><li><a href="#news" data-page="news">События, новости и статьи</a></li><li><a href="#contacts" data-page="contacts">Контакты</a></li></ul></div>
     </div>
     <div class="fx__row">
       <div class="fx__clubs"><span class="mono">Клубы</span><a href="#hero" class="on">Про теннис Виктори<small>Пятницкое шоссе</small></a><a href="#" data-toast="Переход на страницу клуба «ПроТеннис Каширка»">ПроТеннис Каширка<small>Каширское шоссе, д. 24, стр. 1</small></a><a href="#" data-toast="Переход на страницу клуба «ПроТеннис Бутово»">ПроТеннис Бутово<small>Адрес уточняется</small></a></div>
@@ -267,7 +273,7 @@
     </div>
     <div class="fx__legal">
       <div class="fx__brand"><svg class="lm" viewBox="0 0 120 120" aria-hidden="true"><path d="M14 24 L57 91 L104 24" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"/><circle cx="103" cy="23" r="15" fill="#DCF23A"/><path d="M94 12Q111 23 95 35M112 12Q99 24 113 34" fill="none" stroke="#131417" stroke-width="1.8"/></svg><span>© 2026 Про теннис Виктори.<br>Все права защищены.</span></div>
-      <nav><a href="#">Политика обработки персональных данных</a><a href="#">Согласие на обработку данных</a><a href="#">Правила бронирования и посещения клуба</a><a href="#">Публичная оферта</a><a href="#">Реквизиты</a></nav>
+      <nav><a href="#" data-page="policy">Политика обработки персональных данных</a><a href="#" data-page="consent">Согласие на обработку данных</a><a href="#" data-page="rules">Правила бронирования и посещения клуба</a><a href="#" data-page="offer">Публичная оферта</a><a href="#" data-page="requisites">Реквизиты</a></nav>
       <p>ООО «Про теннис Виктори», ИНН XXXXXXXXXX, ОГРН XXXXXXXXXXXXX · Юридический адрес: <span class="tbd">уточнить</span><br>* Instagram — продукт компании Meta, деятельность которой признана экстремистской и запрещена на территории РФ.<br><a href="https://by-iam.ru" target="_blank" rel="noopener" style="text-decoration:underline">Сайт разработан — iAM studio</a></p>
     </div>
   </div>
@@ -284,7 +290,7 @@
   <p class="desc">Выберите корт, дату и время в виджете YCLIENTS. Там же — аренда ракеток, мячей и теннисной пушки.</p>
   <div class="seg"><label><input type="radio" name="s" checked><span>Теннис</span></label><label><input type="radio" name="s"><span>Падел</span></label></div>
   <div class="yc"><span class="mono">Превью виджета</span><div class="yc__d"></div><div class="yc__s"><span>07:00</span><span class="x">08:00</span><span>09:00</span><span>10:00</span><span class="x">18:00</span><span>19:00</span><span class="x">20:00</span><span>21:00</span></div></div>
-  <label class="ck"><input type="checkbox" data-req><span>Я ознакомился(-ась) и принимаю <a href="#">«Правила бронирования и посещения клуба»</a></span></label>
+  <label class="ck"><input type="checkbox" data-req><span>Я ознакомился(-ась) и принимаю <a href="#" data-page="rules">«Правила бронирования и посещения клуба»</a></span></label>
   <button class="bt bt--fill" data-go disabled style="width:100%">Перейти к выбору времени</button>
 </template>
 <template id="t-coach">
@@ -293,7 +299,7 @@
   <p class="desc">Индивидуальная тренировка: выберите направление, тренера, дату и время в виджете YCLIENTS.</p>
   <div class="seg"><label><input type="radio" name="s" checked><span>Теннис</span></label><label><input type="radio" name="s"><span>Падел</span></label><label><input type="radio" name="s"><span>ОФП</span></label></div>
   <div class="yc"><span class="mono">Превью виджета</span><div class="yc__d"></div><div class="yc__s"><span>07:00</span><span>08:00</span><span class="x">09:00</span><span>10:00</span><span>17:00</span><span class="x">18:00</span><span>19:00</span><span class="x">20:00</span></div></div>
-  <label class="ck"><input type="checkbox" data-req><span>Я ознакомился(-ась) и принимаю <a href="#">«Правила бронирования и посещения клуба»</a></span></label>
+  <label class="ck"><input type="checkbox" data-req><span>Я ознакомился(-ась) и принимаю <a href="#" data-page="rules">«Правила бронирования и посещения клуба»</a></span></label>
   <button class="bt bt--fill" data-go disabled style="width:100%">Перейти к выбору тренера</button>
 </template>
 <template id="t-partner">
@@ -304,7 +310,7 @@
     <div class="seg"><label><input type="radio" name="p" checked><span>Теннис</span></label><label><input type="radio" name="p"><span>Падел</span></label></div>
     <div class="f2"><label class="fl"><span>Имя *</span><input required autocomplete="name"></label><label class="fl"><span>Телефон *</span><input required type="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__"></label></div>
     <div class="f2"><label class="fl"><span>Уровень</span><select><option>Начинающий</option><option>Средний</option><option>Продвинутый</option><option>Турнирный</option></select></label><label class="fl"><span>Удобное время</span><select><option>Утро (07–09)</option><option>День (09–17)</option><option>Вечер (17–23)</option><option>Выходные</option></select></label></div>
-    <label class="ck"><input type="checkbox" data-req><span>Нажимая «Отправить», вы даёте согласие на обработку персональных данных в соответствии с <a href="#">Политикой обработки персональных данных</a> ООО «Про теннис Виктори»</span></label>
+    <label class="ck"><input type="checkbox" data-req><span>Нажимая «Отправить», вы даёте согласие на обработку персональных данных в соответствии с <a href="#" data-page="policy">Политикой обработки персональных данных</a> ООО «Про теннис Виктори»</span></label>
     <button class="bt bt--fill" type="submit" disabled style="width:100%">Отправить заявку</button>
   </form>
 </template>
@@ -312,11 +318,11 @@
   <span class="mono" style="color:var(--mute)">Обратная связь · форма сайта</span>
   <h3>Задать вопрос</h3>
   <p class="desc">Ответим в течение 2 часов в рабочее время клуба.</p>
-  <form novalidate data-okh="Спасибо за обращение!" data-okp="Мы ответим вам в течение 2 часов в рабочее время.">
+  <form novalidate data-thanks="contact" data-okh="Спасибо за обращение!" data-okp="Мы ответим вам в течение 2 часов в рабочее время.">
     <div class="f2"><label class="fl"><span>Имя *</span><input required autocomplete="name"></label><label class="fl"><span>Телефон *</span><input required type="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__"></label></div>
     <div class="f2"><label class="fl"><span>E-mail</span><input type="email" autocomplete="email"></label><label class="fl"><span>Тема *</span><select required><option>Общий вопрос</option><option>Бронирование</option><option>Сотрудничество</option><option>Жалоба</option><option>Предложение</option></select></label></div>
     <label class="fl"><span>Сообщение</span><textarea></textarea></label>
-    <label class="ck"><input type="checkbox" data-req><span>Нажимая «Отправить», вы даёте согласие на обработку персональных данных в соответствии с <a href="#">Политикой обработки персональных данных</a> ООО «Про теннис Виктори»</span></label>
+    <label class="ck"><input type="checkbox" data-req><span>Нажимая «Отправить», вы даёте согласие на обработку персональных данных в соответствии с <a href="#" data-page="policy">Политикой обработки персональных данных</a> ООО «Про теннис Виктори»</span></label>
     <button class="bt bt--fill" type="submit" disabled style="width:100%">Отправить</button>
   </form>
 </template>
@@ -324,13 +330,13 @@
   <span class="mono" style="color:var(--mute)">Заявка · корпоративное мероприятие</span>
   <h3>Обсудить мероприятие</h3>
   <p class="desc">Мини-турнир, мастер-класс, банкет — организуем «под ключ». Расскажите о команде, и мы подготовим предложение.</p>
-  <form novalidate data-okh="Заявка на мероприятие принята" data-okp="Мы подготовим индивидуальное предложение и свяжемся с вами в течение 4 часов.">
+  <form novalidate data-thanks="corp" data-okh="Заявка на мероприятие принята" data-okp="Мы подготовим индивидуальное предложение и свяжемся с вами в течение 4 часов.">
     <div class="f2"><label class="fl"><span>Компания *</span><input required autocomplete="organization"></label><label class="fl"><span>Контактное лицо *</span><input required autocomplete="name"></label></div>
     <div class="f2"><label class="fl"><span>Телефон *</span><input required type="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__"></label><label class="fl"><span>E-mail *</span><input required type="email" autocomplete="email"></label></div>
     <div class="f2"><label class="fl"><span>Дата и время *</span><input required type="datetime-local"></label><label class="fl"><span>Участников *</span><input required type="number" min="1" inputmode="numeric"></label></div>
-    <label class="fl"><span>Формат *</span><select required><option>Мастер-класс + игра · 2–3 ч · 8–24 чел.</option><option>Корпоративный турнир · 3–5 ч · 16–48 чел.</option><option>Теннис + падел + ОФП · 4–6 ч · 12–36 чел.</option><option>VIP-вечер · весь вечер · до 40 чел.</option></select></label>
+    <label class="fl"><span>Формат *</span><select required name="dir"><option>Мастер-класс + игра · 2–3 ч · 8–24 чел.</option><option>Корпоративный турнир · 3–5 ч · 16–48 чел.</option><option>Теннис + падел + ОФП · 4–6 ч · 12–36 чел.</option><option>VIP-вечер · весь вечер · до 40 чел.</option></select></label>
     <label class="fl"><span>Пожелания</span><textarea></textarea></label>
-    <label class="ck"><input type="checkbox" data-req><span>Нажимая «Отправить», вы даёте согласие на обработку персональных данных в соответствии с <a href="#">Политикой обработки персональных данных</a> ООО «Про теннис Виктори»</span></label>
+    <label class="ck"><input type="checkbox" data-req><span>Нажимая «Отправить», вы даёте согласие на обработку персональных данных в соответствии с <a href="#" data-page="policy">Политикой обработки персональных данных</a> ООО «Про теннис Виктори»</span></label>
     <button class="bt bt--fill" type="submit" disabled style="width:100%">Отправить заявку</button>
   </form>
 </template>
@@ -342,8 +348,8 @@
     <div class="seg"><label><input type="radio" name="w" checked><span>Для ребёнка</span></label><label><input type="radio" name="w"><span>Для взрослого</span></label></div>
     <div class="f2"><label class="fl"><span>Имя взрослого *</span><input required autocomplete="name"></label><label class="fl"><span>Телефон *</span><input required type="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__"></label></div>
     <div class="f2"><label class="fl"><span>Возраст ученика *</span><input required inputmode="numeric" placeholder="например, 7 лет"></label><label class="fl"><span>Направление</span><select name="dir"><option>Теннис 10S</option><option>Теннис + ОФП</option><option>Падел</option><option>ОФП</option><option>ЛФК</option><option>Теннис для взрослых</option><option>Падел для взрослых</option><option>Групповые тренировки</option><option>Функциональный фитнес</option><option>Персональный фитнес-тренер</option><option>Не знаю — помогите выбрать</option></select></label></div>
-    <label class="ck"><input type="checkbox" data-req><span>Я ознакомился(-ась) и принимаю <a href="#">«Правила бронирования и посещения клуба»</a></span></label>
-    <label class="ck"><input type="checkbox" data-req><span>Нажимая «Отправить», вы даёте согласие на обработку персональных данных в соответствии с <a href="#">Политикой обработки персональных данных</a> ООО «Про теннис Виктори»</span></label>
+    <label class="ck"><input type="checkbox" data-req><span>Я ознакомился(-ась) и принимаю <a href="#" data-page="rules">«Правила бронирования и посещения клуба»</a></span></label>
+    <label class="ck"><input type="checkbox" data-req><span>Нажимая «Отправить», вы даёте согласие на обработку персональных данных в соответствии с <a href="#" data-page="policy">Политикой обработки персональных данных</a> ООО «Про теннис Виктори»</span></label>
     <button class="bt bt--fill" type="submit" disabled style="width:100%">Отправить заявку</button>
   </form>
 </template>
@@ -355,8 +361,8 @@
     <div class="seg"><label><input type="radio" name="w" checked><span>Для ребёнка</span></label><label><input type="radio" name="w"><span>Для взрослого</span></label></div>
     <div class="f2"><label class="fl"><span>Имя *</span><input required autocomplete="name"></label><label class="fl"><span>Телефон *</span><input required type="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__"></label></div>
     <label class="fl"><span>Направление</span><select><option>Теннис</option><option>Падел</option><option>ОФП и функциональный тренинг</option><option>Теннис + ОФП (дети)</option><option>Не знаю — помогите выбрать</option></select></label>
-    <label class="ck"><input type="checkbox" data-req><span>Я ознакомился(-ась) и принимаю <a href="#">«Правила бронирования и посещения клуба»</a></span></label>
-    <label class="ck"><input type="checkbox" data-req><span>Нажимая «Отправить», вы даёте согласие на обработку персональных данных в соответствии с <a href="#">Политикой обработки персональных данных</a> ООО «Про теннис Виктори»</span></label>
+    <label class="ck"><input type="checkbox" data-req><span>Я ознакомился(-ась) и принимаю <a href="#" data-page="rules">«Правила бронирования и посещения клуба»</a></span></label>
+    <label class="ck"><input type="checkbox" data-req><span>Нажимая «Отправить», вы даёте согласие на обработку персональных данных в соответствии с <a href="#" data-page="policy">Политикой обработки персональных данных</a> ООО «Про теннис Виктори»</span></label>
     <button class="bt bt--fill" type="submit" disabled style="width:100%">Отправить заявку</button>
   </form>
 </template>
@@ -365,6 +371,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.13/lenis.min.js"></script>
-<script src="assets/app.js?v=d2299443"></script>
+<script src="assets/app.js?v=c7a29afa"></script>
 </body>
 </html>
