@@ -178,6 +178,12 @@ if($('#cgr')){const cs=$$('#cgr .cc'),cb=$$('#cflt button');let first=true;
 
 
 
+
+
+
+
+
+
 /* ===== v3: остальные страницы ===== */
 /* вопросы-ответы: плавное раскрытие */
 $$('.faq__q').forEach(q=>q.addEventListener('click',()=>{const i=q.closest('.faq__i'),o=!i.classList.contains('open');i.classList.toggle('open',o);q.setAttribute('aria-expanded',o);$('.faq__a',i).addEventListener('transitionend',stRefresh,{once:true})}));
@@ -268,6 +274,9 @@ if($('.rt2')){const bs=$$('.rt2__t button'),ps=$$('.rt2__pn'),pins=$$('.rt2__pin
 /* соседние блоки одного цвета: убираем двойной отступ */
 {const ss=$$('main>section');for(let i=1;i<ss.length;i++){const a=ss[i-1],b=ss[i];if(!a.classList.contains('sec')||!b.classList.contains('sec'))continue;const BG=getComputedStyle(document.body).backgroundColor,bgc=e=>{const c=getComputedStyle(e).backgroundColor;return c==='rgba(0, 0, 0, 0)'?BG:c};const ca=bgc(a),cb=bgc(b);
  const L=c=>{const m=c.match(/\d+/g);return m?(+m[0]+ +m[1]+ +m[2])/765:0};if(ca===cb){a.style.paddingBottom='clamp(48px,5.5vw,90px)';b.style.paddingTop='clamp(24px,3vw,48px)'}else if(L(ca)>.85&&L(cb)>.85){a.style.paddingBottom='clamp(56px,6vw,96px)';b.style.paddingTop='clamp(56px,6vw,96px)'}}}
+/* главная: фильтр направлений — высота блока не прыгает */
+if($('#pgr')&&$$('#flt button').length){const g=$('#pgr');const lock=()=>{const hid=$$('.pc.hid',g);hid.forEach(p=>p.classList.remove('hid'));g.style.minHeight='';const h=g.offsetHeight;hid.forEach(p=>p.classList.add('hid'));g.style.minHeight=h+'px'};
+ lock();addEventListener('load',lock);let lt;addEventListener('resize',()=>{clearTimeout(lt);lt=setTimeout(lock,200)})}
 
 /* ===== /v3 ===== */
 /* ===== scroll animations ===== */

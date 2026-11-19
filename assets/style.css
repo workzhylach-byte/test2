@@ -2277,3 +2277,6 @@ main>.sec:not(.dark)+.sec:not(.dark){padding-top:clamp(56px,6vw,96px)}
 @media (max-width:1240px){.art__fig--w{margin-left:0;margin-right:0}}
 @media (max-width:520px){.pr2__card .btns .bt{flex:none!important;height:54px}}
 @media (max-width:640px){.gl__l h3{margin-top:22px}.gl__l li{min-height:0}}
+.pgr{align-content:start}
+.kt__more{margin-top:28px}
+.co__ld{margin-bottom:clamp(26px,3vw,44px)}
