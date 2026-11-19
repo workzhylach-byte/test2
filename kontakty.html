@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#0D0E0C">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Onest:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=c7a29afa">
+<link rel="stylesheet" href="assets/style.css?v=b7494350">
 </head>
 <body data-page="contacts">
 
@@ -122,19 +122,34 @@
   </div>
 </section>
 
-<section class="sec" id="route">
+<section class="sec rt2" id="route">
   <div class="wrap">
     <div class="hd">
       <h2 class="h2"><span class="ln"><span>Как</span></span><span class="ln"><span class="o">добраться</span></span></h2>
+      <p class="lead">г. Москва, Пятницкое шоссе · ориентир на карте 55.834896, 37.392499</p>
     </div>
-    <div class="rt">
-      <div class="rt__l" data-rv>
-        <div class="rt__i"><span class="rt__ic"><svg viewBox="0 0 24 24"><path d="M5 16V11l2-5h10l2 5v5M5 16h14M5 16v2M19 16v2M3 11h18"/><circle cx="8" cy="13.5" r=".8"/><circle cx="16" cy="13.5" r=".8"/></svg></span><div><h3>На автомобиле</h3><p>Схема подъезда, поворот к клубу и ориентиры <span class="tbd">требует уточнения</span></p><p>Парковка: расположение, условия въезда и стоимость <span class="tbd">требует уточнения</span></p></div></div>
-        <div class="rt__i"><span class="rt__ic"><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="14" rx="3"/><path d="M6 10h12M9 20l-1.5 1.5M15 20l1.5 1.5M8 17l-1 3M16 17l1 3"/><circle cx="9" cy="13.5" r=".8"/><circle cx="15" cy="13.5" r=".8"/></svg></span><div><h3>На общественном транспорте</h3><p>Ближайшая станция метро или остановка, маршрут и время пешком <span class="tbd">требует уточнения</span></p></div></div>
-        <div class="rt__i"><span class="rt__ic"><svg viewBox="0 0 24 24"><path d="M4 21V5l8-2 8 2v16M4 21h16M10 21v-6h4v6"/></svg></span><div><h3>Вход в клуб</h3><p>Расположение входа, ориентиры и условия доступа <span class="tbd">требует уточнения</span></p></div></div>
-      </div>
-      <div class="rt__m">
-        <figure class="rt__im" data-clip><img data-img="10_club_entrance" alt="Фото входа с понятными ориентирами"><span class="rt__ent" aria-hidden="true"><i></i><b>Вход</b></span><span class="ph-note">На фото или схеме нужно обозначить вход в клуб</span></figure>
+    <div class="rt2__g">
+      <figure class="rt2__ph" data-clip>
+        <img data-img="10_club_entrance" alt="Вход в клуб Про теннис Виктори">
+        <div class="rt2__pin" data-for="door" style="left:16%;top:62%"><i></i><b>Вход в клуб</b></div>
+        <div class="rt2__pin rt2__pin--s" data-for="car" style="left:84%;top:78%"><i></i><b>Парковка</b></div>
+        <figcaption><span class="ph-note">Фото входа и схема подхода · требует уточнения</span></figcaption>
+      </figure>
+      <div class="rt2__p">
+        <div class="rt2__t" role="tablist" aria-label="Способ добраться">
+          <button role="tab" class="on" aria-selected="true" data-r="car"><span><svg viewBox="0 0 24 24"><path d="M5 16V11l2-5h10l2 5v5M5 16h14M5 16v2M19 16v2M3 11h18"/><circle cx="8" cy="13.5" r=".8"/><circle cx="16" cy="13.5" r=".8"/></svg></span>На автомобиле</button>
+          <button role="tab" aria-selected="false" data-r="bus"><span><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="14" rx="3"/><path d="M6 10h12M9 20l-1.5 1.5M15 20l1.5 1.5M8 17l-1 3M16 17l1 3"/><circle cx="9" cy="13.5" r=".8"/><circle cx="15" cy="13.5" r=".8"/></svg></span>На транспорте</button>
+          <button role="tab" aria-selected="false" data-r="door"><span><svg viewBox="0 0 24 24"><path d="M4 21V5l8-2 8 2v16M4 21h16M10 21v-6h4v6"/></svg></span>Вход в клуб</button>
+        </div>
+        <div class="rt2__c">
+          <article class="rt2__pn on" data-r="car"><span class="rt2__n">01</span><h3>На автомобиле</h3>
+            <ul><li><b>Схема подъезда</b><span>Поворот к клубу и ориентиры</span><em>уточняется</em></li><li><b>Парковка</b><span>Расположение, условия въезда и стоимость</span><em>уточняется</em></li><li><b>Мест на парковке</b><span>Собственная парковка для гостей клуба</span><em class="ok">40+</em></li></ul></article>
+          <article class="rt2__pn" data-r="bus"><span class="rt2__n">02</span><h3>На общественном транспорте</h3>
+            <ul><li><b>Метро</b><span>Ближайшая станция</span><em>уточняется</em></li><li><b>Остановка</b><span>Маршрут от остановки до клуба</span><em>уточняется</em></li><li><b>Пешком</b><span>Время в пути</span><em>уточняется</em></li></ul></article>
+          <article class="rt2__pn" data-r="door"><span class="rt2__n">03</span><h3>Вход в клуб</h3>
+            <ul><li><b>Где вход</b><span>Расположение входа и ориентиры</span><em>уточняется</em></li><li><b>Доступ</b><span>Условия прохода в клуб</span><em>уточняется</em></li><li><b>Доступная среда</b><span>Пандус и адаптированная раздевалка</span><em class="ok">есть</em></li></ul></article>
+        </div>
+        <div class="btns rt2__b"><a href="https://yandex.ru/maps/-/CXfk6OLT" target="_blank" rel="noopener" class="bt bt--ball">Открыть в Яндекс Картах <svg viewBox="0 0 14 14"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" fill="none" stroke-width="1.5"/></svg></a><a href="tel:+7495" class="bt">Позвонить в клуб</a></div>
       </div>
     </div>
   </div>
@@ -291,6 +306,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.13/lenis.min.js"></script>
-<script src="assets/app.js?v=c7a29afa"></script>
+<script src="assets/app.js?v=b7494350"></script>
 </body>
 </html>

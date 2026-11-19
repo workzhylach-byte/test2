@@ -159,6 +159,11 @@ if($('#cgr')){const cs=$$('#cgr .cc'),cb=$$('#cflt button');let first=true;
 
 
 
+
+
+
+
+
 /* ===== v3: остальные страницы ===== */
 /* вопросы-ответы: плавное раскрытие */
 $$('.faq__q').forEach(q=>q.addEventListener('click',()=>{const i=q.closest('.faq__i'),o=!i.classList.contains('open');i.classList.toggle('open',o);q.setAttribute('aria-expanded',o);$('.faq__a',i).addEventListener('transitionend',stRefresh,{once:true})}));
@@ -182,13 +187,19 @@ if(PAGE==='thanks'){const T={
   contact:['Спасибо','за обращение!','Мы ответим вам в течение 2 часов в рабочее время','Вернуться назад','kontakty.html']};
  const t=T[new URLSearchParams(location.search).get('t')]||T.contact;$('#thxH').innerHTML='<span>'+t[0]+'</span> <span class="o">'+t[1]+'</span>';$('#thxP').textContent=t[2];const b=$('#thxB');b.firstChild.textContent=t[3]+' ';b.href=t[4];
  if(document.referrer&&new URL(document.referrer).origin===location.origin&&!/spasibo/.test(document.referrer))b.href=document.referrer}
-/* фото-тур по клубу: просмотр */
-if($('.tour__i')){const lb=$('#lb'),li=$('img',lb),lc=$('.lb__c',lb),it=$$('.tour__i');let k=0;
- const show=n=>{k=(n+it.length)%it.length;li.src=$('img',it[k]).src;lc.textContent=String(k+1).padStart(2,'0')+' / '+String(it.length).padStart(2,'0')+' · '+$('.tour__t b',it[k]).textContent;G&&G.fromTo(li,{opacity:0,scale:.97},{opacity:1,scale:1,duration:.5,ease:'expo.out'})};
+/* просмотр фото: тур по клубу и галереи в карточках */
+const GAL=(()=>{const lb=$('#lb');if(!lb||!$('.tour__i,.rsc'))return null;const li=$('img',lb),lc=$('.lb__c',lb);let list=[],k=0;
+ const show=n=>{k=(n+list.length)%list.length;li.src=list[k][0];lc.textContent=String(k+1).padStart(2,'0')+' / '+String(list.length).padStart(2,'0')+(list[k][1]?' · '+list[k][1]:'');G&&G.fromTo(li,{opacity:0,scale:.97},{opacity:1,scale:1,duration:.5,ease:'expo.out'})};
  const close=()=>{lb.classList.remove('on');lenis&&lenis.start()};window.closeLb=close;
- it.forEach((t,n)=>{t.setAttribute('tabindex','0');t.setAttribute('role','button');const o=()=>{show(n);lb.classList.add('on');lenis&&lenis.stop()};t.addEventListener('click',o);t.addEventListener('keydown',e=>{if(e.key==='Enter')o()})});
  $('.lb__x',lb).onclick=close;$('.lb__p',lb).onclick=()=>show(k-1);$('.lb__n',lb).onclick=()=>show(k+1);lb.addEventListener('click',e=>{if(e.target===lb)close()});
- addEventListener('keydown',e=>{if(!lb.classList.contains('on'))return;if(e.key==='ArrowRight')show(k+1);if(e.key==='ArrowLeft')show(k-1)})}
+ addEventListener('keydown',e=>{if(!lb.classList.contains('on'))return;if(e.key==='ArrowRight')show(k+1);if(e.key==='ArrowLeft')show(k-1)});
+ let tsx=null;lb.addEventListener('touchstart',e=>tsx=e.touches[0].clientX,{passive:true});lb.addEventListener('touchend',e=>{if(tsx===null)return;const d=e.changedTouches[0].clientX-tsx;if(Math.abs(d)>50)show(k+(d<0?1:-1));tsx=null});
+ return {open:(items,n=0)=>{list=items;show(n);lb.classList.add('on');lenis&&lenis.stop()}}})();
+if(GAL&&$('.tour__i')){const it=$$('.tour__i');const items=()=>it.map(t=>[$('img',t).src,$('.tour__t b',t).textContent]);
+ it.forEach((t,n)=>{t.setAttribute('tabindex','0');t.setAttribute('role','button');const o=()=>GAL.open(items(),n);t.addEventListener('click',o);t.addEventListener('keydown',e=>{if(e.key==='Enter')o()})})}
+if(GAL)$$('.rsc').forEach(r=>{const figs=$$('.rsc__ph figure',r);const cap=($('h3',r)||{}).textContent||'';const items=()=>figs.map(f=>[$('img',f).src,cap]);
+ figs.forEach((f,n)=>{f.setAttribute('tabindex','0');f.setAttribute('role','button');f.setAttribute('aria-label','Открыть фото');f.setAttribute('data-lb','');f.addEventListener('click',()=>GAL.open(items(),n));f.addEventListener('keydown',e=>{if(e.key==='Enter')GAL.open(items(),n)})});
+ const b=$('.btns .bt',r);if(b){b.removeAttribute('data-toast');b.addEventListener('click',e=>{e.preventDefault();GAL.open(items(),0)})}});
 /* анимации новых страниц */
 if(G&&ST&&!RM){
  if($('.phs')){G.from('.phs .bc,.phs .kicker,.phs .lead,.phs__m,.phs .ph__ctas',{y:26,opacity:0,duration:1.1,ease:'expo.out',stagger:.08,delay:.45});
@@ -207,6 +218,8 @@ if($('#ycD')){const d=$('#ycD'),wd=['вс','пн','вт','ср','чт','пт','�
 /* главная: кэмпы — фото раскрывается из окна на весь экран, текст выезжает */
 if($('.cpx')&&G&&ST&&!RM){const mm=G.matchMedia();
  mm.add('(min-width:901px)',()=>{const tl=G.timeline({scrollTrigger:{trigger:'.cpx',start:'top top',end:'bottom bottom',scrub:.8}});
+  const pv=$('.cpx').previousElementSibling;let bg=pv?getComputedStyle(pv).backgroundColor:'';if(!bg||bg==='rgba(0, 0, 0, 0)')bg=getComputedStyle(document.body).backgroundColor;$('.cpx').style.background=bg;
+  tl.fromTo('.cpx__st',{backgroundColor:bg},{backgroundColor:'#0D0E0C',ease:'power1.in',duration:.9},0);
   tl.fromTo('.cpx__win',{clipPath:'inset(14% 22% 14% 22% round 28px)'},{clipPath:'inset(0% 0% 0% 0% round 0px)',ease:'power2.inOut',duration:1},0)
     .fromTo('.cpx__bg',{scale:1.35,yPercent:-3},{scale:1.02,yPercent:3,ease:'none',duration:1.6},0)
     .fromTo('.cpx__sh',{opacity:.15},{opacity:1,ease:'none',duration:.8},.3)
@@ -228,6 +241,9 @@ if($('.pin__t')){const t=$('.pin__t');if(G&&ST&&!RM){ST.create({trigger:t,start:
  G.from('.pin__bars b,.pin__bars small',{y:20,opacity:0,duration:.8,ease:'expo.out',stagger:.06,delay:.6,scrollTrigger:{trigger:'.pin__lad',start:'top 85%'}})}else t.classList.add('in')}
 /* клубные карты: лёгкий наклон за курсором */
 $$('[data-tilt]').forEach(c=>{if(!matchMedia('(hover:hover)').matches)return;c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.setProperty('--ry',(x*14)+'deg');c.style.setProperty('--rx',(-y*12)+'deg')});c.addEventListener('pointerleave',()=>{c.style.setProperty('--ry','0deg');c.style.setProperty('--rx','0deg')})});
+/* контакты: как добраться — вкладки и метки на фото */
+if($('.rt2')){const bs=$$('.rt2__t button'),ps=$$('.rt2__pn'),pins=$$('.rt2__pin');const set=r=>{bs.forEach(b=>{const on=b.dataset.r===r;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});ps.forEach(p=>p.classList.toggle('on',p.dataset.r===r));pins.forEach(p=>p.classList.toggle('on',p.dataset.for===r||(r==='bus'&&p.dataset.for==='door')))};
+ bs.forEach(b=>b.addEventListener('click',()=>set(b.dataset.r)));set('car')}
 
 /* ===== /v3 ===== */
 /* ===== scroll animations ===== */
