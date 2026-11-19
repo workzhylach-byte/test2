@@ -2214,3 +2214,66 @@ section.pin{background:var(--paper)}
 @media (max-width:520px){.rt2__t button{padding:10px;font-size:12px}.rt2__t button span{width:34px;height:34px}.rt2__pn h3{max-width:none;font-size:30px}.rt2__n{font-size:80px}.rt2__ph{min-height:300px}.rt2__pin b{font-size:9px;padding:6px 8px}}
 @media (max-width:640px){.rt2__b{flex-direction:column}.rt2__b .bt{width:100%;white-space:nowrap}.rt2__pn h3{padding-right:70px}.rt2__n{font-size:64px;top:10px}.rt2__ph figcaption{display:none}}
 @media (max-width:640px){.rt2__b .bt{flex:none}}
+
+/* ===== правки 4 ===== */
+/* галочки в формах видны на любом фоне */
+.ck input{color:inherit;border-color:currentColor;opacity:.85}
+.ck input:checked{opacity:1}
+/* направления программ: панель в две колонки и под любую высоту экрана */
+.pv__c1>:first-child{margin-top:0}
+@media (min-width:1201px){
+ .pv__g{grid-template-columns:minmax(0,.78fr) minmax(0,1.5fr);gap:clamp(30px,4vw,70px);align-items:center}
+ .pv__c{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);column-gap:clamp(22px,2.4vw,36px);align-items:start}
+ .pv__c2{border-left:1px solid var(--line-l);padding-left:clamp(22px,2.4vw,36px)}
+ .pv__c2 .pv__p{margin-top:0}
+ .pv__c2 .pv__btns{flex-direction:column;align-items:stretch}
+ .pv__c2 .pv__btns .bt{width:100%}
+ .pv__h{position:relative;top:auto}
+ .pv__n{font-size:clamp(100px,11vw,190px)}
+ .pv__t{font-size:clamp(42px,4.6vw,84px)}
+}
+@media (min-width:1201px) and (max-height:820px){.pv{padding:clamp(60px,7vh,90px) 0}.pv__x p{font-size:15px}.pv__sp div{padding:10px 14px}.pv__n{font-size:clamp(90px,15vh,150px)}}
+.pv__btns .bt{white-space:normal;text-align:center;line-height:1.15}
+/* заголовки без переносов внутри слова */
+.h1,.h2,.pv__t,.fp h3,.bp__t,.cpx__t,.tc__b h3,.sb h3,.rsc h3,.ifc__b h3,.cmf__i h3,.gl__l h3,.cnd b,.stp__l h3,.thx h1,.sr h3,.cat h3,.rt2__pn h3,.cpr__t,.pin__c b,.tl__s b,.pgc__c li,.who__t,.art h2,.sc__b h3{overflow-wrap:normal;word-break:normal;hyphens:manual}
+.tl__s b{white-space:nowrap}
+/* кэмп: списки в карточках с одной линии */
+.pgc__c ul{margin-top:26px;padding-top:0}
+/* кэмп: остались вопросы */
+.ask2__c{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:clamp(18px,3vw,50px);align-items:center;background:var(--ink);color:var(--chalk);border-radius:calc(var(--r)*2);padding:clamp(24px,3vw,44px);position:relative;overflow:hidden;isolation:isolate}
+.ask2__c::after{content:'';position:absolute;right:-90px;top:-90px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(220,242,58,.22),transparent 70%);z-index:-1}
+.ask2__l .mono,.ask2__m .mono{color:var(--mute-l);display:block;margin-bottom:10px}
+.ask2__l h2{font-family:var(--ff-d);font-weight:700;text-transform:uppercase;font-size:clamp(30px,2.8vw,48px);line-height:.92}
+.ask2__m a{font-size:clamp(18px,1.6vw,24px);font-weight:500;border-bottom:1px solid var(--ball);padding-bottom:3px;overflow-wrap:anywhere}
+.ask2__r{display:flex;flex-direction:column;gap:8px}
+.ask2__r .bt:not(.bt--ball){border-color:var(--line-l)}
+.ask2__r .bt:not(.bt--ball)::before{background:var(--chalk)}
+.ask2__r .bt:not(.bt--ball):hover{color:var(--ink)}
+@media (max-width:1000px){.ask2__c{grid-template-columns:1fr}.ask2__r{flex-direction:row;flex-wrap:wrap}}
+@media (max-width:520px){.ask2__r .bt{width:100%}}
+/* день рождения: заголовок цен */
+.h2--m{font-size:clamp(34px,4.4vw,72px)!important}
+.pr2 .hd{margin-bottom:clamp(30px,3.4vw,50px)}
+/* новость: строка с датой и автором */
+.phs__m{align-items:center}
+.phs__m .chip{height:28px}
+/* статья: ссылки-кнопки */
+.art__more{display:inline-flex;align-items:center;gap:12px;margin-top:22px;padding:12px 20px;border:1px solid var(--ink);border-radius:99px;font-weight:500;font-size:15px;line-height:1.2;white-space:nowrap;transition:background .35s,color .35s}
+.art__more svg{width:14px;height:14px;flex:none;transition:transform .5s var(--ease)}
+.art__more:hover{background:var(--ink);color:var(--chalk)}
+.art__more:hover svg{transform:translateX(4px)}
+@media (max-width:420px){.art__more{white-space:normal}}
+svg:not([width]):not([class]){max-width:100%}
+@media (min-width:1201px){.pv--r .pv__g{grid-template-columns:minmax(0,1.5fr) minmax(0,.78fr)}}
+@media (min-width:1201px){
+ .pv__g{grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr)}.pv--r .pv__g{grid-template-columns:minmax(0,1.5fr) minmax(0,.9fr)}
+ .pv__c2 .pv__pr li{display:grid;grid-template-columns:1fr;gap:2px;padding:10px 0}
+ .pv__c2 .pv__pr b{white-space:normal;font-size:20px;line-height:1.05}
+}
+@media (max-width:520px){.pr2__card .btns{flex-direction:column}.pr2__card .btns .bt{width:100%;flex:none;white-space:nowrap}}.phs__m{font-size:14px}.phs__m .chip{font-size:11px}
+/* соседние светлые блоки: отступ без двойного «воздуха» (CSS, без зависимости от скрипта) */
+main>.sec:not(.dark):has(+.sec:not(.dark)){padding-bottom:clamp(56px,6vw,96px)}
+main>.sec:not(.dark)+.sec:not(.dark){padding-top:clamp(56px,6vw,96px)}
+@media (max-width:1240px){.art__fig--w{margin-left:0;margin-right:0}}
+@media (max-width:520px){.pr2__card .btns .bt{flex:none!important;height:54px}}
+@media (max-width:640px){.gl__l h3{margin-top:22px}.gl__l li{min-height:0}}

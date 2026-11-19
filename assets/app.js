@@ -164,6 +164,20 @@ if($('#cgr')){const cs=$$('#cgr .cc'),cb=$$('#cflt button');let first=true;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ===== v3: остальные страницы ===== */
 /* вопросы-ответы: плавное раскрытие */
 $$('.faq__q').forEach(q=>q.addEventListener('click',()=>{const i=q.closest('.faq__i'),o=!i.classList.contains('open');i.classList.toggle('open',o);q.setAttribute('aria-expanded',o);$('.faq__a',i).addEventListener('transitionend',stRefresh,{once:true})}));
@@ -244,6 +258,16 @@ $$('[data-tilt]').forEach(c=>{if(!matchMedia('(hover:hover)').matches)return;c.a
 /* контакты: как добраться — вкладки и метки на фото */
 if($('.rt2')){const bs=$$('.rt2__t button'),ps=$$('.rt2__pn'),pins=$$('.rt2__pin');const set=r=>{bs.forEach(b=>{const on=b.dataset.r===r;b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});ps.forEach(p=>p.classList.toggle('on',p.dataset.r===r));pins.forEach(p=>p.classList.toggle('on',p.dataset.for===r||(r==='bus'&&p.dataset.for==='door')))};
  bs.forEach(b=>b.addEventListener('click',()=>set(b.dataset.r)));set('car')}
+/* заголовки: длинное слово не рвём — уменьшаем шрифт, пока слово не влезет */
+{const SEL='h1,h2,h3,.h1,.h2,.pv__t,.fp h3,.bp__t,.cpx__t,.tc__b h3,.sb h3,.rsc h3,.ifc__b h3,.cmf__i h3,.gl__l h3,.cnd b,.stp__l h3,.thx h1,.sr h3,.cat h3,.rt2__pn h3,.cpr__t,.pin__c b,.tl__s b,.pgc__c li,.who__t,.art h2,.sc__b h3,.ask2__l h2,.pr2__v,.fx__h,.ncd h3,.mnu__s h3,.ofp__t';
+ const fit=()=>{$$(SEL).forEach(el=>{el.style.fontSize='';const w=el.clientWidth;if(!w)return;const words=(el.innerText||el.textContent||'').split(/\s+/).filter(Boolean);if(!words.length)return;
+   const m=document.createElement('span');m.style.cssText='position:absolute;visibility:hidden;white-space:nowrap;left:0;top:0;padding:0;margin:0';el.appendChild(m);let mx=0;
+   words.forEach(t=>{m.textContent=t;mx=Math.max(mx,m.getBoundingClientRect().width)});m.remove();
+   if(mx>w){const fs=parseFloat(getComputedStyle(el).fontSize);el.style.fontSize=Math.floor(fs*w/mx*0.97)+'px'}})};
+ fit();document.fonts&&document.fonts.ready.then(()=>{fit();ST&&ST.refresh()});let ft;addEventListener('resize',()=>{clearTimeout(ft);ft=setTimeout(fit,150)})}
+/* соседние блоки одного цвета: убираем двойной отступ */
+{const ss=$$('main>section');for(let i=1;i<ss.length;i++){const a=ss[i-1],b=ss[i];if(!a.classList.contains('sec')||!b.classList.contains('sec'))continue;const BG=getComputedStyle(document.body).backgroundColor,bgc=e=>{const c=getComputedStyle(e).backgroundColor;return c==='rgba(0, 0, 0, 0)'?BG:c};const ca=bgc(a),cb=bgc(b);
+ const L=c=>{const m=c.match(/\d+/g);return m?(+m[0]+ +m[1]+ +m[2])/765:0};if(ca===cb){a.style.paddingBottom='clamp(48px,5.5vw,90px)';b.style.paddingTop='clamp(24px,3vw,48px)'}else if(L(ca)>.85&&L(cb)>.85){a.style.paddingBottom='clamp(56px,6vw,96px)';b.style.paddingTop='clamp(56px,6vw,96px)'}}}
 
 /* ===== /v3 ===== */
 /* ===== scroll animations ===== */
