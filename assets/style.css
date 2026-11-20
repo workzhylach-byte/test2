@@ -2280,3 +2280,10 @@ main>.sec:not(.dark)+.sec:not(.dark){padding-top:clamp(56px,6vw,96px)}
 .pgr{align-content:start}
 .kt__more{margin-top:28px}
 .co__ld{margin-bottom:clamp(26px,3vw,44px)}
+/* правки 5: телефон */
+@media (hover:none){.rw:hover::before{transform:scaleY(0)}}
+@media (max-width:900px){.rw .bt{white-space:nowrap}}
+@media (max-width:520px){.rw .bt{width:100%;justify-self:stretch;padding:0 16px}}
+.cnd__ttl{margin-top:clamp(56px,7vw,100px);margin-bottom:16px}
+.cpx__c>*,.cpx__r>*{min-width:0}
+.cnd__ttl{margin-top:clamp(72px,8vw,110px);margin-bottom:18px}

@@ -184,6 +184,10 @@ if($('#cgr')){const cs=$$('#cgr .cc'),cb=$$('#cflt button');let first=true;
 
 
 
+
+
+
+
 /* ===== v3: остальные страницы ===== */
 /* вопросы-ответы: плавное раскрытие */
 $$('.faq__q').forEach(q=>q.addEventListener('click',()=>{const i=q.closest('.faq__i'),o=!i.classList.contains('open');i.classList.toggle('open',o);q.setAttribute('aria-expanded',o);$('.faq__a',i).addEventListener('transitionend',stRefresh,{once:true})}));
@@ -224,7 +228,7 @@ if(GAL)$$('.rsc').forEach(r=>{const figs=$$('.rsc__ph figure',r);const cap=($('h
 if(G&&ST&&!RM){
  if($('.phs')){G.from('.phs .bc,.phs .kicker,.phs .lead,.phs__m,.phs .ph__ctas',{y:26,opacity:0,duration:1.1,ease:'expo.out',stagger:.08,delay:.45});
   $$('.phs__court rect,.phs__court line').forEach((l,i)=>{const n=l.getTotalLength?l.getTotalLength():800;G.fromTo(l,{strokeDasharray:n,strokeDashoffset:n},{strokeDashoffset:0,duration:2,ease:'power2.inOut',delay:.3+i*.05,onComplete:()=>{l.style.strokeDasharray=l.classList.contains('nt')?'3 5':'none'}})})}
- $$('[data-rv]').forEach(g=>G.from(g.children,{y:50,opacity:0,duration:1.05,ease:'expo.out',stagger:.08,scrollTrigger:{trigger:g,start:'top 86%'}}));
+ $$('[data-rv]').forEach(g=>[...g.children].forEach((el,k)=>{el.style.transition='none';G.from(el,{y:50,opacity:0,duration:1.05,ease:'expo.out',delay:(k%4)*.08,scrollTrigger:{trigger:el,start:'top 94%',once:true},onComplete:()=>{el.style.transition=''}})}));
  $$('[data-clip]').forEach(m=>G.fromTo(m,{clipPath:'inset(100% 0 0 0)'},{clipPath:'inset(0% 0 0 0)',duration:1.4,ease:'expo.inOut',scrollTrigger:{trigger:m,start:'top 88%'}}));
  $$('[data-par] img').forEach(im=>G.fromTo(im,{yPercent:-5,scale:1.1},{yPercent:5,scale:1.1,ease:'none',scrollTrigger:{trigger:im.parentElement,start:'top bottom',end:'bottom top',scrub:true}}));
  $$('.ptb__r').forEach(r=>G.from(r,{x:-40,opacity:0,duration:.9,ease:'expo.out',scrollTrigger:{trigger:r,start:'top 92%'}}));
